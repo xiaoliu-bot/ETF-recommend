@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>板块ETF技术分析 · 历史回放示例（2026-06-01）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --bg: #f5f6fa; --card: #ffffff; --text: #1f2937; --muted: #6b7280;
+    --line: #e5e7eb; --red: #e03131; --green: #2f9e44; --blue: #1971c2;
+    --amber: #e8590c; --gray: #868e96;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: var(--bg); color: var(--text); }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 16px 20px 40px; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 0; }
+  header h1 { font-size: 22px; margin: 0; }
+  .tag { font-size: 12px; background: #e7f0fd; color: var(--blue); padding: 3px 8px; border-radius: 6px; }
+  .spacer { flex: 1; }
+  select { padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; font-size: 13px; color: var(--text); }
+  .replay-banner {
+    background: linear-gradient(90deg,#fff4e6,#ffe8cc);
+    border: 1px solid #ffd8a8; color: #9a3412; border-radius: 12px;
+    padding: 11px 16px; font-size: 13.5px; line-height: 1.7; margin-bottom: 16px;
+  }
+  .replay-banner b { color: #c2410c; }
+  .replay-banner .tag2 { display:inline-block; background:#e03131; color:#fff; font-weight:700; padding:1px 9px; border-radius:6px; margin-right:8px; font-size:12px; }
+  .indices { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .idx { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; font-size: 13px; }
+  .idx b { margin-right: 8px; }
+  .summary { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .pill { border-radius: 999px; padding: 5px 14px; font-size: 13px; font-weight: 600; color: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; cursor: pointer; transition: box-shadow .15s, transform .15s; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08); transform: translateY(-2px); }
+  .card.active { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(25,113,194,.2); }
+  .card .row1 { display: flex; justify-content: space-between; align-items: center; }
+  .card .name { font-weight: 700; font-size: 15px; }
+  .card .code { color: var(--muted); font-size: 12px; }
+  .badge { font-size: 12px; font-weight: 700; color: #fff; padding: 3px 10px; border-radius: 6px; }
+  .card .row2 { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+  .price { font-size: 20px; font-weight: 700; }
+  .chg { font-size: 13px; font-weight: 600; }
+  .up { color: var(--red); } .down { color: var(--green); }
+  .scorebar { height: 6px; background: #eef0f3; border-radius: 3px; margin-top: 10px; overflow: hidden; }
+  .scorebar i { display: block; height: 100%; border-radius: 3px; }
+  .scoretxt { font-size: 12px; color: var(--muted); margin-top: 5px; display: flex; justify-content: space-between; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 18px; }
+  .panel h2 { font-size: 17px; margin: 0 0 12px; }
+  .panel h3 { font-size: 14px; margin: 16px 0 8px; color: var(--muted); }
+  #klineChart { width: 100%; height: 460px; }
+  #historyChart { width: 100%; height: 260px; }
+  .reasons li { font-size: 13px; line-height: 1.9; }
+  .delta-pos { color: var(--red); font-weight: 600; margin-left: 6px; }
+  .delta-neg { color: var(--green); font-weight: 600; margin-left: 6px; }
+  .delta-zero { color: var(--muted); margin-left: 6px; }
+  .advice { background: #fff8e6; border: 1px solid #ffe3a3; border-radius: 10px; padding: 10px 14px; font-size: 14px; margin-top: 10px; }
+  .newsitem { border-left: 3px solid var(--line); padding: 6px 12px; margin-bottom: 10px; }
+  .newsitem .t { font-size: 14px; font-weight: 600; }
+  .newsitem .s { font-size: 13px; color: var(--muted); margin-top: 3px; line-height: 1.6; }
+  .newsitem .m { font-size: 12px; color: #9ca3af; margin-top: 3px; }
+  .sent { font-size: 12px; padding: 1px 7px; border-radius: 5px; margin-right: 6px; color: #fff; }
+  .sent-good { background: var(--red); } .sent-bad { background: var(--green); } .sent-mid { background: var(--gray); }
+  .method { font-size: 13.5px; line-height: 2; color: #374151; }
+  .disclaimer { color: #9ca3af; font-size: 12.5px; text-align: center; padding: 18px 0 0; line-height: 1.8; }
+  .flex2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+  @media (max-width: 900px) { .flex2 { grid-template-columns: 1fr; } }
+  .snapinfo { font-size: 13px; color: var(--muted); }
+  .ind-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .ind-table td { padding: 5px 8px; border-bottom: 1px dashed var(--line); }
+  .ind-table td:first-child { color: var(--muted); width: 42%; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="replay-banner">
+    <span class="tag2">历史回放示例</span>
+    本页数据锚定 <b>2026-06-01 收盘</b>，由截至该交易日的真实日K线 + 当日板块政策新闻，经信号引擎回放生成。
+    用于演示「定时快照 + 回溯」能力，<b>非实时行情、不构成任何投资建议</b>。
+  </div>
+
+  <header>
+    <h1>📊 板块ETF技术分析看板</h1>
+    <span class="tag">技术面 + 政策面</span>
+    <span class="tag">趋势跟踪</span>
+    <span class="tag">历史回放</span>
+    <div class="spacer"></div>
+    <span class="snapinfo" id="snapLabel">示例快照：</span>
+  </header>
+
+  <div class="indices" id="indices"></div>
+  <div class="summary" id="summary"></div>
+  <div class="grid" id="grid"></div>
+
+  <div class="flex2">
+    <div class="panel">
+      <h2 id="detailTitle">K线与技术指标</h2>
+      <div id="klineChart"></div>
+      <h3>信号历史（历史回放示例为单点快照，无多次更新记录）</h3>
+      <div id="historyChart"></div>
+    </div>
+    <div class="panel">
+      <h2 id="signalTitle">信号与分析逻辑</h2>
+      <div id="signalBox"></div>
+      <h3>关键指标</h3>
+      <table class="ind-table" id="indTable"></table>
+      <h3>相关政策/新闻</h3>
+      <div id="etfNews"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>📰 板块政策/新闻池（2026-06-01）</h2>
+    <div id="allNews"></div>
+  </div>
+
+  <div class="panel">
+    <h2>🧠 分析思考逻辑（方法论）</h2>
+    <div class="method" id="method"></div>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ 本站信号由规则化技术指标模型自动生成，叠加新闻情绪修正，仅供学习研究参考，不构成任何投资建议。<br>
+    ETF 有市场风险，投资需谨慎。数据来源：东方财富/腾讯公开行情接口（免费源，可能存在延迟或缺失）。本页为历史回放演示页。
+  </div>
+</div>
+
+<script>
+const SIG_COLOR = { "加仓": "#e03131", "建仓": "#e8590c", "持有": "#f08c00", "观望": "#868e96", "减仓": "#2f9e44", "回避": "#1864ab" };
+let snap = null, indexData = { runs: [] }, currentCode = null;
+let klineChart = null, historyChart = null;
+
+function fmtChg(v) {
+  const cls = v >= 0 ? "up" : "down";
+  return `<span class="${cls}">${v >= 0 ? "+" : ""}${v.toFixed(2)}%</span>`;
+}
+function scoreColor(s) {
+  if (s >= 70) return "#e03131";
+  if (s >= 60) return "#e8590c";
+  if (s >= 45) return "#868e96";
+  return "#2f9e44";
+}
+function sentCls(s) { return s === "利好" ? "sent-good" : (s === "利空" ? "sent-bad" : "sent-mid"); }
+
+async function loadSnapshot(file) {
+  snap = await (await fetch("data/" + file + "?_=" + Date.now())).json();
+  document.getElementById("snapLabel").textContent = `示例快照：${snap.run_time} · ${snap.label}`;
+  renderAll();
+}
+
+function renderAll() {
+  document.getElementById("indices").innerHTML = snap.indices.map(x =>
+    `<div class="idx"><b>${x.name}</b>${x.price} ${fmtChg(x.chg_pct)}</div>`).join("") +
+    `<div class="idx"><b>本次快照</b>${snap.run_time} · ${snap.label}</div>`;
+
+  const cnt = {};
+  snap.etfs.forEach(e => cnt[e.signal] = (cnt[e.signal] || 0) + 1);
+  document.getElementById("summary").innerHTML =
+    ["加仓","建仓","持有","观望","减仓","回避"].filter(s => cnt[s])
+    .map(s => `<span class="pill" style="background:${SIG_COLOR[s]}">${s} ${cnt[s]}</span>`).join("");
+
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
+  [...snap.etfs].sort((a, b) => b.score - a.score).forEach(e => {
+    const d = document.createElement("div");
+    d.className = "card" + (e.code === currentCode ? " active" : "");
+    d.innerHTML = `
+      <div class="row1"><div><span class="name">${e.name}</span><br><span class="code">${e.code} · ${e.sector}</span></div>
+      <span class="badge" style="background:${SIG_COLOR[e.signal]}">${e.signal}</span></div>
+      <div class="row2"><span class="price">${e.price}</span><span class="chg">${fmtChg(e.chg_pct)}</span></div>
+      <div class="scorebar"><i style="width:${e.score}%;background:${scoreColor(e.score)}"></i></div>
+      <div class="scoretxt"><span>综合评分</span><b style="color:${scoreColor(e.score)}">${e.score}</b></div>`;
+    d.onclick = () => selectEtf(e.code);
+    grid.appendChild(d);
+  });
+
+  document.getElementById("allNews").innerHTML = (snap.news || []).map(n =>
+    `<div class="newsitem"><div class="t"><span class="sent ${sentCls(n.sentiment)}">${n.sentiment}</span>【${n.sector}】${n.title}</div>
+     <div class="s">${n.summary || ""}</div><div class="m">${n.time} · ${n.source || ""}</div></div>`).join("") || "<span class='snapinfo'>暂无新闻数据</span>";
+
+  document.getElementById("method").textContent = snap.methodology || "";
+
+  if (!currentCode || !snap.etfs.find(e => e.code === currentCode)) currentCode = [...snap.etfs].sort((a,b)=>b.score-a.score)[0].code;
+  selectEtf(currentCode);
+}
+
+function selectEtf(code) {
+  currentCode = code;
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
+  const e = snap.etfs.find(x => x.code === code);
+  const cards = document.querySelectorAll(".card");
+  const sorted = [...snap.etfs].sort((a, b) => b.score - a.score);
+  const idx = sorted.findIndex(x => x.code === code);
+  if (cards[idx]) cards[idx].classList.add("active");
+
+  document.getElementById("detailTitle").textContent = `${e.name}（${e.code}）K线与技术指标`;
+  document.getElementById("signalTitle").textContent = `${e.name} · 信号与分析逻辑`;
+
+  document.getElementById("signalBox").innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+      <span class="badge" style="background:${SIG_COLOR[e.signal]};font-size:16px;padding:6px 16px">${e.signal}</span>
+      <b style="font-size:18px;color:${scoreColor(e.score)}">评分 ${e.score}</b>
+    </div>
+    <div class="advice">💡 ${e.advice}</div>
+    <h3>打分明细（思考过程）</h3>
+    <ul class="reasons">` +
+    e.reasons.map(r => {
+      const cls = r.delta > 0 ? "delta-pos" : (r.delta < 0 ? "delta-neg" : "delta-zero");
+      const sign = r.delta > 0 ? "+" + r.delta : r.delta;
+      return `<li>${r.text}<span class="${cls}">${r.delta === 0 ? "±0" : sign}</span></li>`;
+    }).join("") + "</ul>";
+
+  const I = e.indicators;
+  document.getElementById("indTable").innerHTML = `
+    <tr><td>MA5 / MA10</td><td>${I.ma5} / ${I.ma10}</td></tr>
+    <tr><td>MA20 / MA60</td><td>${I.ma20} / ${I.ma60}</td></tr>
+    <tr><td>MACD (DIF/DEA/柱)</td><td>${I.macd.dif} / ${I.macd.dea} / ${I.macd.hist}</td></tr>
+    <tr><td>RSI(14)</td><td>${I.rsi}</td></tr>
+    <tr><td>KDJ (K/D/J)</td><td>${I.kdj.k} / ${I.kdj.d} / ${I.kdj.j}</td></tr>
+    <tr><td>BOLL (上/中/下)</td><td>${I.boll.up} / ${I.boll.mid} / ${I.boll.low}</td></tr>
+    <tr><td>量比(对5日均量)</td><td>${I.vol_ratio}</td></tr>`;
+
+  document.getElementById("etfNews").innerHTML = (e.news || []).map(n =>
+    `<div class="newsitem"><div class="t"><span class="sent ${sentCls(n.sentiment)}">${n.sentiment}</span>${n.title}</div>
+     <div class="m">${n.time} · ${n.source || ""}</div></div>`).join("") || "<span class='snapinfo'>近3日无直接相关新闻</span>";
+
+  renderKline(e);
+  renderHistory(e);
+}
+
+function renderKline(e) {
+  if (!klineChart) klineChart = echarts.init(document.getElementById("klineChart"));
+  const dates = e.kline.map(b => b[0]);
+  const ohlc = e.kline.map(b => [b[1], b[2], b[4], b[3]]);
+  const vols = e.kline.map((b, i) => ({ value: b[5], itemStyle: { color: b[2] >= b[1] ? "#e03131" : "#2f9e44" } }));
+  const hist = e.macd_hist.map(v => ({ value: v, itemStyle: { color: v >= 0 ? "#e03131" : "#2f9e44" } }));
+  klineChart.setOption({
+    animation: false,
+    axisPointer: { link: [{ xAxisIndex: "all" }] },
+    tooltip: { trigger: "axis", axisPointer: { type: "cross" } },
+    legend: { data: ["MA5", "MA10", "MA20", "MA60"], top: 0, textStyle: { fontSize: 11 } },
+    grid: [
+      { left: 55, right: 15, top: 28, height: "52%" },
+      { left: 55, right: 15, top: "64%", height: "13%" },
+      { left: 55, right: 15, top: "81%", height: "13%" }
+    ],
+    xAxis: [0,1,2].map(i => ({ type: "category", data: dates, gridIndex: i,
+      axisLabel: { show: i === 2, fontSize: 10 }, axisTick: { show: false } })),
+    yAxis: [
+      { scale: true, gridIndex: 0, axisLabel: { fontSize: 10 }, splitLine: { lineStyle: { color: "#f0f1f3" } } },
+      { gridIndex: 1, axisLabel: { show: false }, splitLine: { show: false } },
+      { gridIndex: 2, axisLabel: { show: false }, splitLine: { show: false } }
+    ],
+    dataZoom: [{ type: "inside", xAxisIndex: [0,1,2], start: 30, end: 100 }],
+    series: [
+      { type: "candlestick", data: ohlc, itemStyle: { color: "#e03131", color0: "#2f9e44", borderColor: "#e03131", borderColor0: "#2f9e44" } },
+      ...["ma5","ma10","ma20","ma60"].map((k, i) => ({
+        name: "MA" + k.slice(2), type: "line", data: e.ma_lines[k], symbol: "none",
+        lineStyle: { width: 1.2, color: ["#f59f00","#1971c2","#9c36b5","#495057"][i] } })),
+      { type: "bar", xAxisIndex: 1, yAxisIndex: 1, data: vols, name: "成交量" },
+      { type: "bar", xAxisIndex: 2, yAxisIndex: 2, data: hist, name: "MACD柱" }
+    ]
+  }, true);
+}
+
+function renderHistory(e) {
+  const el = document.getElementById("historyChart");
+  if (!indexData || !indexData.runs || !indexData.runs.length) {
+    el.innerHTML = "<div class='snapinfo' style='padding:60px 0;text-align:center'>📌 历史回放示例为单点快照，未关联多次更新记录，故无法绘制信号历史曲线。<br>正式版在每日多次更新后将自动累积并展示该曲线。</div>";
+    return;
+  }
+  if (!historyChart) historyChart = echarts.init(el);
+  const runs = indexData.runs.filter(r => r.signals[e.code]);
+  const times = runs.map(r => r.time.slice(5, 16) + " " + r.label);
+  const scores = runs.map(r => r.signals[e.code].score);
+  const sigs = runs.map(r => r.signals[e.code].signal);
+  historyChart.setOption({
+    animation: false,
+    tooltip: { trigger: "axis", formatter: p => {
+      const i = p[0].dataIndex;
+      return `${times[i]}<br>评分：<b>${scores[i]}</b><br>信号：<b>${sigs[i]}</b><br>价格：${runs[i].signals[e.code].price}`; } },
+    grid: { left: 40, right: 15, top: 20, bottom: 40 },
+    xAxis: { type: "category", data: times, axisLabel: { fontSize: 10, rotate: 25 } },
+    yAxis: { min: 0, max: 100, splitLine: { lineStyle: { color: "#f0f1f3" } }, axisLabel: { fontSize: 10 } },
+    series: [{
+      type: "line", data: scores, symbolSize: 8, lineStyle: { color: "#1971c2" },
+      itemStyle: { color: p => SIG_COLOR[sigs[p.dataIndex]] || "#1971c2" },
+      markArea: { silent: true, data: [
+        [{ yAxis: 70, itemStyle: { color: "rgba(224,49,49,.06)" } }, { yAxis: 100 }],
+        [{ yAxis: 0, itemStyle: { color: "rgba(47,158,68,.06)" } }, { yAxis: 45 }]
+      ] },
+      label: { show: true, formatter: p => sigs[p.dataIndex], fontSize: 10, position: "top" }
+    }]
+  }, true);
+}
+
+window.addEventListener("resize", () => { klineChart && klineChart.resize(); historyChart && historyChart.resize(); });
+
+(async function init() {
+  await loadSnapshot("replay_2026-06-01.json");
+})();
+</script>
+</body>
+</html>
