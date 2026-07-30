@@ -1,0 +1,45 @@
+name: ETF 看板每日自动更新
+
+on:
+  schedule:
+    # 北京时间 11:35 / 14:50 / 15:30  ->  UTC 03:35 / 06:50 / 07:30（周一至周五）
+    - cron: "35 3 * * 1-5"
+    - cron: "50 6 * * 1-5"
+    - cron: "30 7 * * 1-5"
+  workflow_dispatch:   # 允许在 Actions 页面手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 抓取板块新闻（尽力而为，失败不阻断）
+        run: python scripts/news_fetch.py || echo "news_fetch 失败，沿用已有 news.json"
+        continue-on-error: true
+
+      - name: 更新 ETF 信号快照（拉行情->算指标->打分->落盘）
+        run: python scripts/update.py
+
+      - name: 提交并推送到 main（触发 Pages 重建）
+        run: |
+          git config user.name "etf-bot"
+          git config user.email "bot@local"
+          git add data/ scripts/ .nojekyll README.md start_server.bat
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "auto: ETF 信号更新 $(date +%F_%H%M%S)"
+            git push
+          fi
