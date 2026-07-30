@@ -145,7 +145,23 @@ async function loadIndex() {
 }
 
 async function loadSnapshot(file) {
-  snap = await (await fetch("data/" + file + "?_=" + Date.now())).json();
+  try {
+    const res = await fetch("data/" + file + "?_=" + Date.now());
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    snap = await res.json();
+  } catch (e) {
+    console.warn("快照加载失败，回退 latest.json：", file, e);
+    await loadLatest();
+    return;
+  }
+  renderAll();
+}
+
+async function loadLatest() {
+  const res = await fetch("data/latest.json?_=" + Date.now());
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  snap = await res.json();
+  if (!indexData) indexData = { runs: [] };
   renderAll();
 }
 
@@ -273,6 +289,10 @@ function renderKline(e) {
 
 function renderHistory(e) {
   if (!historyChart) historyChart = echarts.init(document.getElementById("historyChart"));
+  if (!indexData || !indexData.runs || !indexData.runs.length) {
+    historyChart.setOption({ title: { text: "暂无多次更新记录", left: "center", top: "center", textStyle: { fontSize: 13, color: "#9ca3af" } } }, true);
+    return;
+  }
   const runs = indexData.runs.filter(r => r.signals[e.code]);
   const times = runs.map(r => r.time.slice(5, 16) + " " + r.label);
   const scores = runs.map(r => r.signals[e.code].score);
@@ -300,9 +320,22 @@ function renderHistory(e) {
 window.addEventListener("resize", () => { klineChart && klineChart.resize(); historyChart && historyChart.resize(); });
 
 (async function init() {
-  await loadIndex();
-  const runs = indexData.runs;
-  await loadSnapshot(runs[runs.length - 1].file);
+  try {
+    await loadIndex();
+    const runs = indexData.runs;
+    if (runs && runs.length) {
+      await loadSnapshot(runs[runs.length - 1].file);
+      return;
+    }
+  } catch (e) {
+    console.warn("index.json/快照加载失败，回退 latest.json", e);
+  }
+  try {
+    await loadLatest();
+  } catch (e2) {
+    document.getElementById("grid").innerHTML =
+      "<div class='panel'>⚠️ 数据加载失败，可能是 GitHub Pages 正在构建或网络异常，请稍后刷新重试。</div>";
+  }
 })();
 </script>
 </body>
