@@ -11,9 +11,15 @@ on:
 permissions:
   contents: write
 
+# 防止同一时间多个更新任务并发推送造成冲突
+concurrency:
+  group: etf-update
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: 拉取仓库
         uses: actions/checkout@v4

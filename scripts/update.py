@@ -67,37 +67,53 @@ def secid(code):
     return ("1." if code.startswith(("5", "6")) else "0.") + code
 
 
-def http_json(url, retries=3):
+def http_json(url, retries=2, timeout=10):
     import time
     last = None
     for attempt in range(retries):
         try:
             req = urllib.request.Request(url, headers={**UA, "Referer": "https://quote.eastmoney.com/",
                                                        "Connection": "close"})
-            with urllib.request.urlopen(req, timeout=20, context=CTX) as r:
+            with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:
             last = e
-            time.sleep(1.5 * (attempt + 1))
+            if attempt < retries - 1:
+                time.sleep(1.0 * (attempt + 1))
     raise last
 
 
+# 东方财富多个 CDN 节点，按序快速失败切换（避免单节点卡死）
+EM_NODES = [
+    "11.push2his.eastmoney.com",
+    "21.push2his.eastmoney.com",
+    "31.push2his.eastmoney.com",
+    "41.push2his.eastmoney.com",
+    "51.push2his.eastmoney.com",
+    "push2his.eastmoney.com",
+]
+
+
 def fetch_kline_em(sid, lmt=160):
-    """主数据源: 东方财富(轮换CDN节点)"""
-    import random
-    node = random.randint(11, 99)
-    url = (f"https://{node}.push2his.eastmoney.com/api/qt/stock/kline/get?"
-           f"secid={sid}&fields1=f1,f2,f3&fields2=f51,f52,f53,f54,f55,f56,f57"
-           f"&klt=101&fqt=1&end=20500101&lmt={lmt}")
-    js = http_json(url)
-    data = js.get("data") or {}
-    bars = []
-    for line in data.get("klines") or []:
-        p = line.split(",")
-        # date, open, close, high, low, volume, amount
-        bars.append([p[0], float(p[1]), float(p[2]), float(p[3]), float(p[4]),
-                     float(p[5]), float(p[6])])
-    return data.get("name", ""), bars
+    """主数据源: 东方财富(多CDN节点快速失败切换)"""
+    last = None
+    for node in EM_NODES:
+        try:
+            url = (f"https://{node}/api/qt/stock/kline/get?"
+                   f"secid={sid}&fields1=f1,f2,f3&fields2=f51,f52,f53,f54,f55,f56,f57"
+                   f"&klt=101&fqt=1&end=20500101&lmt={lmt}")
+            js = http_json(url, retries=1, timeout=8)
+            data = js.get("data") or {}
+            bars = []
+            for line in data.get("klines") or []:
+                p = line.split(",")
+                bars.append([p[0], float(p[1]), float(p[2]), float(p[3]), float(p[4]),
+                             float(p[5]), float(p[6])])
+            if bars:
+                return data.get("name", ""), bars
+        except Exception as e:
+            last = e
+    raise last or RuntimeError("eastmoney 无数据")
 
 
 def fetch_kline_tx(sid, lmt=160):
@@ -106,7 +122,7 @@ def fetch_kline_tx(sid, lmt=160):
     symbol = ("sh" if mkt == "1" else "sz") + code
     url = (f"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?"
            f"param={symbol},day,,,{lmt},qfq")
-    js = http_json(url)
+    js = http_json(url, retries=1, timeout=8)
     node = (js.get("data") or {}).get(symbol) or {}
     klines = node.get("qfqday") or node.get("day") or []
     bars = []
@@ -117,16 +133,33 @@ def fetch_kline_tx(sid, lmt=160):
     return symbol, bars
 
 
+def fetch_kline_sina(sid, lmt=160):
+    """第三兜底数据源: 新浪财经"""
+    mkt, code = sid.split(".")
+    symbol = ("sh" if mkt == "1" else "sz") + code
+    url = (f"https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/"
+           f"CN_MarketData.getKLineData?symbol={symbol}&scale=240&ma=no&datalen={lmt}")
+    js = http_json(url, retries=1, timeout=8)
+    raw = js.get("result") or js.get("data")
+    klines = json.loads(raw) if isinstance(raw, str) else (raw or [])
+    bars = []
+    for p in klines:
+        # 新浪: day, open, high, low, close, volume
+        bars.append([p["day"], float(p["open"]), float(p["close"]), float(p["high"]),
+                     float(p["low"]), float(p["volume"]), float(p["volume"])])
+    return symbol, bars
+
+
 def fetch_kline(sid, lmt=160):
-    import time
-    try:
-        name, bars = fetch_kline_em(sid, lmt)
-        if bars:
-            return name, bars
-    except Exception:
-        pass
-    time.sleep(0.8)
-    return fetch_kline_tx(sid, lmt)
+    """依次尝试 东财 -> 腾讯 -> 新浪，任意一个成功即返回"""
+    for fn in (fetch_kline_em, fetch_kline_tx, fetch_kline_sina):
+        try:
+            name, bars = fn(sid, lmt)
+            if bars:
+                return name, bars
+        except Exception:
+            continue
+    raise RuntimeError(f"所有数据源均失败: {sid}")
 
 
 # ---------------- 指标计算(纯Python) ----------------
