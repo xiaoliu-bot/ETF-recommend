@@ -75,7 +75,8 @@ def secid(code):
     return ("1." if code.startswith(("5", "6")) else "0.") + code
 
 
-def http_json(url, retries=1, timeout=6):
+def http_json(url, retries=2, timeout=5, backoff=0.3):
+    """带超时+指数退避重试的 JSON 请求；单次超时即放弃并退避后重试。"""
     import time
     last = None
     for attempt in range(retries):
@@ -87,7 +88,27 @@ def http_json(url, retries=1, timeout=6):
         except Exception as e:
             last = e
             if attempt < retries - 1:
-                time.sleep(1.0 * (attempt + 1))
+                time.sleep(backoff * (2 ** attempt) + random.random() * 0.3)
+    raise last
+
+
+def http_text(url, retries=2, timeout=8, backoff=0.3, referer="https://quotes.money.163.com/"):
+    """与 http_json 同款重试机制，但返回解码后的文本(兼容 CSV/GBK，如网易财经)。"""
+    import time
+    last = None
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers={**UA, "Referer": referer, "Connection": "close"})
+            with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
+                raw = r.read()
+                try:
+                    return raw.decode("utf-8-sig")
+                except Exception:
+                    return raw.decode("gbk", errors="ignore")
+        except Exception as e:
+            last = e
+            if attempt < retries - 1:
+                time.sleep(backoff * (2 ** attempt) + random.random() * 0.3)
     raise last
 
 
@@ -98,19 +119,20 @@ EM_NODES = [
     "31.push2his.eastmoney.com",
     "41.push2his.eastmoney.com",
     "51.push2his.eastmoney.com",
+    "push2.eastmoney.com",
     "push2his.eastmoney.com",
 ]
 
 
 def fetch_kline_em(sid, lmt=160):
-    """主数据源: 东方财富(多CDN节点快速失败切换)"""
+    """主数据源: 东方财富(多CDN节点 + 每节点超时重试)"""
     last = None
     for node in EM_NODES[:3]:   # 只试前3个节点，快速失败以减少请求量
         try:
             url = (f"https://{node}/api/qt/stock/kline/get?"
                    f"secid={sid}&fields1=f1,f2,f3&fields2=f51,f52,f53,f54,f55,f56,f57"
                    f"&klt=101&fqt=1&end=20500101&lmt={lmt}")
-            js = http_json(url, retries=1, timeout=8)
+            js = http_json(url, retries=2, timeout=5)
             data = js.get("data") or {}
             bars = []
             for line in data.get("klines") or []:
@@ -130,7 +152,7 @@ def fetch_kline_tx(sid, lmt=160):
     symbol = ("sh" if mkt == "1" else "sz") + code
     url = (f"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?"
            f"param={symbol},day,,,{lmt},qfq")
-    js = http_json(url, retries=1, timeout=8)
+    js = http_json(url, retries=2, timeout=5)
     node = (js.get("data") or {}).get(symbol) or {}
     klines = node.get("qfqday") or node.get("day") or []
     bars = []
@@ -147,7 +169,7 @@ def fetch_kline_sina(sid, lmt=160):
     symbol = ("sh" if mkt == "1" else "sz") + code
     url = (f"https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/"
            f"CN_MarketData.getKLineData?symbol={symbol}&scale=240&ma=no&datalen={lmt}")
-    js = http_json(url, retries=1, timeout=8)
+    js = http_json(url, retries=2, timeout=5)
     raw = js.get("result") or js.get("data")
     klines = json.loads(raw) if isinstance(raw, str) else (raw or [])
     bars = []
@@ -158,10 +180,40 @@ def fetch_kline_sina(sid, lmt=160):
     return symbol, bars
 
 
+def fetch_kline_163(sid, lmt=160):
+    """第四兜底数据源: 网易财经(CSV，独立源站，抗单点故障)"""
+    mkt, code = sid.split(".")
+    prefix = "0" if mkt == "1" else "1"   # 163 约定: 沪市前缀0, 深市前缀1
+    end = datetime.now().strftime("%Y%m%d")
+    start = (datetime.now() - timedelta(days=lmt + 40)).strftime("%Y%m%d")
+    url = (f"https://quotes.money.163.com/service/chddata.html?"
+           f"code={prefix}{code}&start={start}&end={end}"
+           f"&fields=TCLOSE;HIGH;LOW;TOPEN;VOTURNOVER;VATURNOVER")
+    txt = http_text(url, retries=2, timeout=8)
+    lines = [ln for ln in txt.splitlines() if ln.strip()]
+    if len(lines) < 2:
+        raise RuntimeError("163 返回空")
+    bars = []
+    for ln in lines[1:]:   # 跳过表头
+        p = ln.split(",")
+        if len(p) < 9:
+            continue
+        try:
+            date = p[0]
+            open_ = float(p[6]); close = float(p[3]); high = float(p[4]); low = float(p[5])
+            vol = float(p[7]); amt = float(p[8])
+        except (ValueError, IndexError):
+            continue
+        bars.append([date, open_, close, high, low, vol, amt])
+    if not bars:
+        raise RuntimeError("163 无有效K线")
+    return f"163:{code}", bars
+
+
 def fetch_kline(sid, lmt=160):
-    """依次尝试 东财 -> 腾讯 -> 新浪，任意一个成功即返回"""
+    """依次尝试 东财 -> 腾讯 -> 新浪 -> 网易，任意一个成功即返回(均带超时重试)"""
     time.sleep(FETCH_GAP + random.random() * JITTER)   # 限频：每个标的之间间隔
-    for fn in (fetch_kline_em, fetch_kline_tx, fetch_kline_sina):
+    for fn in (fetch_kline_em, fetch_kline_tx, fetch_kline_sina, fetch_kline_163):
         try:
             name, bars = fn(sid, lmt)
             if bars:
@@ -558,6 +610,17 @@ def main(asof=None):
             print(f"[warn] index {iname}: {e}")
 
     import time as _t
+    # 载入上次快照，作为个别ETF抓取失败时的兜底(保障网站不缺板块)
+    by_code = {}
+    if not asof:
+        try:
+            with open(os.path.join(DATA_DIR, "latest.json"), "r", encoding="utf-8") as f:
+                prev = json.load(f)
+            for e in prev.get("etfs", []):
+                by_code[e["code"]] = e
+        except Exception:
+            pass
+
     etfs, failed = [], []
     for code, name, sector in ETF_LIST:
         _t.sleep(0.5)
@@ -572,8 +635,16 @@ def main(asof=None):
             etfs.append(analyze(code, name, sector, bars, news))
             print(f"[ok] {name} {code} -> {etfs[-1]['signal']} ({etfs[-1]['score']})")
         except Exception as e:
-            failed.append(code)
-            print(f"[fail] {name} {code}: {e}")
+            prev_e = by_code.get(code) if not asof else None
+            if prev_e:
+                prev_e = dict(prev_e)
+                prev_e["stale"] = True
+                prev_e.setdefault("reasons", []).append("数据源暂不可达，沿用上次更新")
+                etfs.append(prev_e)
+                print(f"[stale] {name} {code} -> 沿用上次({len(prev_e.get('kline', []))}根K线)")
+            else:
+                failed.append(code)
+                print(f"[fail] {name} {code}: {e}")
 
     if not etfs:
         raise SystemExit("全部拉取失败，终止且不落盘")
