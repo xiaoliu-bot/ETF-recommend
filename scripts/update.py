@@ -8,6 +8,7 @@
 import json
 import os
 import ssl
+import time
 import urllib.request
 from datetime import datetime, timedelta
 
@@ -58,6 +59,12 @@ INDICES = [
 ]
 
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+
+# ---------------- 抓取限频 ----------------
+# 每个ETF抓取前固定间隔 + 随机抖动，整体降低请求频率，
+# 避免在同一共享出口IP(如GitHub runner)上触发源站(东财/腾讯/新浪)限流。
+FETCH_GAP = 1.2    # 每个标的之间的固定间隔(秒)
+JITTER = 0.6       # 随机抖动上限(秒)，打散请求节奏
 CTX = ssl.create_default_context()
 CTX.check_hostname = False
 CTX.verify_mode = ssl.CERT_NONE
@@ -67,7 +74,7 @@ def secid(code):
     return ("1." if code.startswith(("5", "6")) else "0.") + code
 
 
-def http_json(url, retries=2, timeout=10):
+def http_json(url, retries=1, timeout=6):
     import time
     last = None
     for attempt in range(retries):
@@ -97,7 +104,7 @@ EM_NODES = [
 def fetch_kline_em(sid, lmt=160):
     """主数据源: 东方财富(多CDN节点快速失败切换)"""
     last = None
-    for node in EM_NODES:
+    for node in EM_NODES[:3]:   # 只试前3个节点，快速失败以减少请求量
         try:
             url = (f"https://{node}/api/qt/stock/kline/get?"
                    f"secid={sid}&fields1=f1,f2,f3&fields2=f51,f52,f53,f54,f55,f56,f57"
@@ -152,6 +159,7 @@ def fetch_kline_sina(sid, lmt=160):
 
 def fetch_kline(sid, lmt=160):
     """依次尝试 东财 -> 腾讯 -> 新浪，任意一个成功即返回"""
+    time.sleep(FETCH_GAP + time.random() * JITTER)   # 限频：每个标的之间间隔
     for fn in (fetch_kline_em, fetch_kline_tx, fetch_kline_sina):
         try:
             name, bars = fn(sid, lmt)
