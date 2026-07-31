@@ -7,6 +7,7 @@
 """
 import json
 import os
+import random
 import ssl
 import time
 import urllib.request
@@ -159,7 +160,7 @@ def fetch_kline_sina(sid, lmt=160):
 
 def fetch_kline(sid, lmt=160):
     """依次尝试 东财 -> 腾讯 -> 新浪，任意一个成功即返回"""
-    time.sleep(FETCH_GAP + time.random() * JITTER)   # 限频：每个标的之间间隔
+    time.sleep(FETCH_GAP + random.random() * JITTER)   # 限频：每个标的之间间隔
     for fn in (fetch_kline_em, fetch_kline_tx, fetch_kline_sina):
         try:
             name, bars = fn(sid, lmt)
