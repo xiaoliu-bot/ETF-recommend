@@ -32,6 +32,7 @@
   .card .name { font-weight: 700; font-size: 15px; }
   .card .code { color: var(--muted); font-size: 12px; }
   .badge { font-size: 12px; font-weight: 700; color: #fff; padding: 3px 10px; border-radius: 6px; }
+  .tenv { font-size: 11px; font-weight: 600; color: #fff; padding: 2px 8px; border-radius: 6px; margin-left: 6px; vertical-align: middle; }
   .card .row2 { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
   .price { font-size: 20px; font-weight: 700; }
   .chg { font-size: 13px; font-weight: 600; }
@@ -115,6 +116,8 @@
 
 <script>
 const SIG_COLOR = { "加仓": "#e03131", "建仓": "#e8590c", "持有": "#f08c00", "观望": "#868e96", "减仓": "#2f9e44", "回避": "#1864ab" };
+const TENV_COLOR = { "up": "#e03131", "down": "#2f9e44", "range": "#868e96" };
+const TENV_LABEL = { "up": "上行周期", "down": "下行周期", "range": "震荡" };
 let snap = null, indexData = null, currentCode = null;
 let klineChart = null, historyChart = null;
 
@@ -186,7 +189,7 @@ function renderAll() {
     d.className = "card" + (e.code === currentCode ? " active" : "");
     d.innerHTML = `
       <div class="row1"><div><span class="name">${e.name}</span><br><span class="code">${e.code} · ${e.sector}</span></div>
-      <span class="badge" style="background:${SIG_COLOR[e.signal]}">${e.signal}</span></div>
+      <span><span class="badge" style="background:${SIG_COLOR[e.signal]}">${e.signal}</span><span class="tenv" style="background:${TENV_COLOR[e.trend_env]||'#868e96'}">${TENV_LABEL[e.trend_env]||e.trend_env}</span></span></div>
       <div class="row2"><span class="price">${e.price}</span><span class="chg">${fmtChg(e.chg_pct)}</span></div>
       <div class="scorebar"><i style="width:${e.score}%;background:${scoreColor(e.score)}"></i></div>
       <div class="scoretxt"><span>综合评分</span><b style="color:${scoreColor(e.score)}">${e.score}</b></div>`;
@@ -221,6 +224,7 @@ function selectEtf(code) {
   document.getElementById("signalBox").innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
       <span class="badge" style="background:${SIG_COLOR[e.signal]};font-size:16px;padding:6px 16px">${e.signal}</span>
+      <span class="tenv" style="background:${TENV_COLOR[e.trend_env]||'#868e96'}">${TENV_LABEL[e.trend_env]||e.trend_env}</span>
       <b style="font-size:18px;color:${scoreColor(e.score)}">评分 ${e.score}</b>
     </div>
     <div class="advice">💡 ${e.advice}</div>

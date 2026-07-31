@@ -249,6 +249,40 @@ def analyze(code, name, sector, bars, news):
     bu, bm, bl = boll(closes)
     vol_ratio = vols[i] / (sum(vols[i - 5:i]) / 5) if i >= 5 else 1.0
 
+    # ===== 趋势环境与回调状态识别(核心: 区分上行周期健康回调 vs 趋势反转) =====
+    ma60_up = (ma60[i] is not None and ma60[i - 20] is not None and ma60[i] > ma60[i - 20])
+    above_ma60 = ma60[i] is not None and price > ma60[i]
+    ma20_above_ma60 = (ma20[i] is not None and ma60[i] is not None and ma20[i] > ma60[i])
+    if ma60_up and above_ma60 and ma20_above_ma60:
+        trend_env = "up"          # 上行周期
+    elif (not ma60_up) and (not above_ma60) and (not ma20_above_ma60):
+        trend_env = "down"        # 下行周期
+    else:
+        trend_env = "range"       # 震荡
+
+    # 上行环境中从近期高点回撤3%~15%、且仍在MA60上方 = 周期内的回调(非反转)
+    recent_high = max(closes[max(0, i - 20):i + 1])
+    pullback_depth = max(0.0, (1 - price / recent_high) * 100) if recent_high else 0.0
+    in_pullback = (trend_env == "up" and 3 <= pullback_depth <= 15 and above_ma60)
+
+    # 回调质量(仅上行环境有效): 缩量洗盘 + 回踩支撑不破 + 幅度温和 + 低位企稳
+    pq = 0.0
+    pq_parts = []
+    if trend_env == "up":
+        if vol_ratio < 0.85 and chg <= 0:
+            pq += 5; pq_parts.append(f"回调缩量(量比{vol_ratio:.2f})，洗盘非出货")
+        if ma20[i] and price >= ma20[i] * 0.985:
+            pq += 4; pq_parts.append("回踩20日线附近未有效跌破，支撑有效")
+        elif ma60[i] and price >= ma60[i] * 0.99:
+            pq += 2; pq_parts.append("回踩60日线附近获得支撑")
+        if 3 <= pullback_depth <= 10:
+            pq += 3; pq_parts.append(f"回调幅度温和({pullback_depth:.1f}%)")
+        if i >= 2 and closes[i] >= closes[i - 1] >= closes[i - 2]:
+            pq += 2; pq_parts.append("近3日价格企稳回升")
+        rng = bars[i][3] - bars[i][4]
+        if rng > 0 and (bars[i][2] - bars[i][4]) / (rng + 1e-9) > 0.5:
+            pq += 2; pq_parts.append("长下影线，低位有买盘承接")
+
     score = 50.0
     reasons = []
     reversal_parts = []   # 超跌反转信号的明细
@@ -331,6 +365,14 @@ def analyze(code, name, sector, bars, news):
     if rev > 0:
         add(rev * w["reversal"], "超跌反转信号：" + "；".join(reversal_parts))
 
+    # ===== 上行周期回调质量因子(核心修复"追涨杀跌": 上行中回调=加仓点) =====
+    # 仅在 trend_env=="up" 生效；区分"健康回调(洗盘)"与"破位下跌(出货)"
+    if trend_env == "up" and in_pullback and pq >= 5:
+        add(pq * w["reversal"], "上行周期健康回调：" + "；".join(pq_parts)
+            + "，属洗盘性质，是分批加仓良机(非追涨杀跌)")
+    elif trend_env == "up" and in_pullback and pq > 0:
+        add(pq * 0.6 * w["reversal"], "上行周期回调(质量偏弱)：" + "；".join(pq_parts))
+
     # ===== 动量型过热警戒(防追高，保留右侧纪律) =====
     if style == "momentum":
         if rv is not None and rv > 80:
@@ -350,25 +392,42 @@ def analyze(code, name, sector, bars, news):
 
     score = max(0, min(100, round(score, 1)))
 
-    # ===== 信号映射(动量型加"反转/催化保底"，不轻易回避) =====
+    # ===== 信号映射(动量型加"反转/催化保底"；上行周期健康回调翻为加仓) =====
     above20 = ma20[i] and price > ma20[i]
     recent_break = ma20[i] and any(
         closes[j] <= (ma20[j] or closes[j]) and closes[j + 1] > (ma20[j + 1] or 0)
         for j in range(max(0, i - 5), i) if ma20[j] and ma20[j + 1])
     has_reversal = rev >= 6
     has_good_news = nd > 0
+    # 过热: 已严重超买，则上行回调先等回踩确认，不急于加仓(防"接飞刀")
+    overheated = (rv is not None and rv > 80) or (i >= 10 and (price / closes[i - 10] - 1) > 0.30)
+    up_pullback_add = (trend_env == "up" and in_pullback and pq >= 8 and not overheated)
+    up_pullback_build = (trend_env == "up" and in_pullback and pq >= 5)
 
     if score >= 70:
         signal, advice = "加仓", "强势多头，可加仓至6-8成（分批，勿一次打满）"
     elif score >= 60:
         if recent_break or (above20 and crossed_up):
             signal, advice = "建仓", "趋势刚转多，轻仓2-3成试错"
+        elif up_pullback_add:
+            signal, advice = "加仓", "上行周期中回调至支撑位(20日线)企稳，属洗盘性质，是分批加仓良机(非追涨杀跌)；破MA60止损离场"
         else:
             signal, advice = "持有", "趋势健康，持仓4-6成"
     elif score >= 45:
-        signal, advice = "观望", "多空不明，空仓等待，持仓<3成"
+        if up_pullback_add:
+            signal, advice = "加仓", "上行趋势中回调至支撑位缩量企稳，属洗盘，可分批加仓(非追涨杀跌)；破MA60止损"
+        elif up_pullback_build:
+            signal, advice = "建仓", "上行趋势中回调，质量尚可，可轻仓试多；破MA60离场"
+        else:
+            signal, advice = "观望", "多空不明，空仓等待，持仓<3成"
     elif score >= 35:
-        signal, advice = "减仓", "技术面转弱，减仓至2成以下"
+        # 上行周期强质量回调，不轻易减仓(关键修复: 避免追涨杀跌)
+        if up_pullback_add:
+            signal, advice = "加仓", "上行周期中回调至支撑位企稳，分批加仓良机(非追涨杀跌)；破MA60止损"
+        elif up_pullback_build:
+            signal, advice = "建仓", "上行趋势中回调，可轻仓试多；破MA60离场"
+        else:
+            signal, advice = "减仓", "技术面转弱，减仓至2成以下"
     else:
         # 动量型保底：出现反转或利好催化时不直接回避，给小仓左侧试错机会
         if style == "momentum" and (has_reversal or has_good_news):
@@ -381,6 +440,8 @@ def analyze(code, name, sector, bars, news):
         "price": round(price, 3), "chg_pct": round(chg, 2),
         "score": score, "signal": signal, "advice": advice,
         "reasons": reasons, "reversal": round(rev, 1),
+        "trend_env": trend_env, "in_pullback": bool(in_pullback),
+        "pullback_depth": round(pullback_depth, 1), "pullback_quality": round(pq, 1),
         "indicators": {
             "ma5": rnd(ma5[i]), "ma10": rnd(ma10[i]), "ma20": rnd(ma20[i]), "ma60": rnd(ma60[i]),
             "rsi": rnd(rv, 1),
@@ -409,9 +470,12 @@ METHODOLOGY = (
     "动量型(半导体/芯片/科技/人工智能/新能源车/光伏/军工)——趋势位置惩罚减半(×0.5)、MACD/KDJ/RSI加权放大、"
     "新闻催化修正放大(±15)，并新增超跌反转因子(绿柱收窄/RSI低位回升/底部抬升/收回布林下轨)捕捉V型反弹起点，"
     "同时对动量型设过热警戒(RSI>80/远离上轨/近10日涨>30%)，反转或利好催化出现时不轻易回避。"
-    "技术维度：趋势(MA20/MA60位置、MA20斜率、MA5/MA10排列)、动量(MACD金死叉与红绿柱、RSI、KDJ)、"
-    "量能(量比方向)、乖离(布林带)、超跌反转。映射：≥70加仓｜60-70建仓/持有｜45-60观望｜35-45减仓｜<35回避。"
-    "设计取向：趋势跟踪为基，动量型兼顾左侧反转；所有信号仅供研究参考，不构成投资建议。"
+    "【上行周期回调加仓】先判定趋势环境(MA60斜率/价格位置/MA20与MA60关系)：上行周期中若价格从近期高点"
+    "回撤3%~15%且仍在MA60上方，且呈缩量洗盘、回踩20日线不破、幅度温和、长下影企稳等健康特征，则识别为"
+    "'上升趋势中的回调'而非'趋势反转'，信号由减仓/观望翻转为加仓/建仓(破MA60止损离场)。下行/震荡周期不抄底，保持右侧纪律。"
+    "技术维度：趋势环境与位置、动量(MACD金死叉与红绿柱、RSI、KDJ)、量能(量比方向)、乖离(布林带)、"
+    "超跌反转、上行回调质量。映射：≥70加仓｜60-70建仓/持有｜45-60观望｜35-45减仓｜<35回避。"
+    "设计取向：趋势跟踪为基，兼顾左侧反转与上行回调加仓，规避追涨杀跌；所有信号仅供研究参考，不构成投资建议。"
 )
 def load_replay_news(asof):
     """历史回放模式加载该日期对应的新闻文件(若存在)。"""
