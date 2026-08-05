@@ -61,6 +61,9 @@
   .flex2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
   @media (max-width: 900px) { .flex2 { grid-template-columns: 1fr; } }
   .snapinfo { font-size: 13px; color: var(--muted); }
+  #refreshBtn { font-size: 13px; border: 1px solid var(--line); background: #fff; color: var(--blue); border-radius: 8px; padding: 5px 12px; cursor: pointer; font-weight: 600; }
+  #refreshBtn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  #refreshStatus { font-size: 12px; color: var(--muted); }
   .ind-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
   .ind-table td { padding: 5px 8px; border-bottom: 1px dashed var(--line); }
   .ind-table td:first-child { color: var(--muted); width: 42%; }
@@ -75,6 +78,8 @@
     <div class="spacer"></div>
     <span class="snapinfo">快照回溯：</span>
     <select id="snapSelect"></select>
+    <button id="refreshBtn" title="立即刷新到最新">↻ 刷新</button>
+    <span id="refreshStatus" class="snapinfo"></span>
   </header>
 
   <div class="indices" id="indices"></div>
@@ -120,6 +125,10 @@ const TENV_COLOR = { "up": "#e03131", "down": "#2f9e44", "range": "#868e96" };
 const TENV_LABEL = { "up": "上行周期", "down": "下行周期", "range": "震荡" };
 let snap = null, indexData = null, currentCode = null;
 let klineChart = null, historyChart = null;
+let currentFile = null;            // 当前展示的快照文件
+let userPinnedFile = null;         // 用户手动钉住的历史快照（null=跟随最新）
+const REFRESH_MS = 3 * 60 * 1000; // 自动刷新间隔：3 分钟
+let autoTimer = null;
 
 function fmtChg(v) {
   const cls = v >= 0 ? "up" : "down";
@@ -135,16 +144,27 @@ function sentCls(s) { return s === "利好" ? "sent-good" : (s === "利空" ? "s
 
 async function loadIndex() {
   indexData = await (await fetch("data/index.json?_=" + Date.now())).json();
+  rebuildSelect();
+}
+
+function rebuildSelect() {
   const sel = document.getElementById("snapSelect");
-  sel.innerHTML = "";
   const runs = [...indexData.runs].reverse();
+  sel.innerHTML = "";
   runs.forEach((r, i) => {
     const o = document.createElement("option");
     o.value = r.file;
     o.textContent = `${r.time.slice(0, 16)} · ${r.label}` + (i === 0 ? "（最新）" : "");
     sel.appendChild(o);
   });
-  sel.onchange = () => loadSnapshot(sel.value);
+  // 用户已钉住某历史快照则保持；否则跟随最新
+  if (userPinnedFile && runs.some(r => r.file === userPinnedFile)) {
+    sel.value = userPinnedFile;
+  } else {
+    sel.value = runs.length ? runs[0].file : "";
+    userPinnedFile = null;
+  }
+  sel.onchange = () => { userPinnedFile = sel.value; loadSnapshot(sel.value); };
 }
 
 async function loadSnapshot(file) {
@@ -152,20 +172,24 @@ async function loadSnapshot(file) {
     const res = await fetch("data/" + file + "?_=" + Date.now());
     if (!res.ok) throw new Error("HTTP " + res.status);
     snap = await res.json();
+    currentFile = file;
+    renderAll();
+    updateRefreshStatus();
   } catch (e) {
     console.warn("快照加载失败，回退 latest.json：", file, e);
     await loadLatest();
     return;
   }
-  renderAll();
 }
 
 async function loadLatest() {
   const res = await fetch("data/latest.json?_=" + Date.now());
   if (!res.ok) throw new Error("HTTP " + res.status);
   snap = await res.json();
+  currentFile = "latest.json";
   if (!indexData) indexData = { runs: [] };
   renderAll();
+  updateRefreshStatus();
 }
 
 function renderAll() {
@@ -323,12 +347,53 @@ function renderHistory(e) {
 
 window.addEventListener("resize", () => { klineChart && klineChart.resize(); historyChart && historyChart.resize(); });
 
+// ---------- 自动刷新（每次抓取完即刷新页面） ----------
+function updateRefreshStatus() {
+  const el = document.getElementById("refreshStatus");
+  if (!el || !snap) return;
+  const t = new Date();
+  const p = n => String(n).padStart(2, "0");
+  el.textContent = `自动刷新 开 · 数据时间 ${snap.run_time} · 本页更新 ${p(t.getHours())}:${p(t.getMinutes())}:${p(t.getSeconds())}`;
+}
+
+async function refreshData() {
+  if (document.hidden) return;   // 标签页不可见时不浪费请求
+  try {
+    indexData = await (await fetch("data/index.json?_=" + Date.now())).json();
+    const runs = [...indexData.runs].reverse();
+    const latestFile = runs.length ? runs[0].file : null;
+    rebuildSelect();
+    // 用户钉住的历史快照优先，否则跟随最新
+    const target = (userPinnedFile && runs.some(r => r.file === userPinnedFile))
+      ? userPinnedFile : latestFile;
+    if (target && target !== currentFile) {
+      await loadSnapshot(target);   // 有更新则自动切换并渲染
+    } else {
+      updateRefreshStatus();        // 无新数据也刷新“本页更新”时间
+    }
+  } catch (e) {
+    console.warn("自动刷新失败：", e);
+  }
+}
+
+function startAutoRefresh() {
+  if (autoTimer) clearInterval(autoTimer);
+  autoTimer = setInterval(refreshData, REFRESH_MS);
+  updateRefreshStatus();
+}
+
 (async function init() {
+  document.getElementById("refreshBtn").onclick = async () => {
+    userPinnedFile = null;        // 手动刷新：取消历史钉住，回到最新
+    await refreshData();
+  };
   try {
     await loadIndex();
     const runs = indexData.runs;
     if (runs && runs.length) {
       await loadSnapshot(runs[runs.length - 1].file);
+      currentFile = runs[runs.length - 1].file;
+      startAutoRefresh();
       return;
     }
   } catch (e) {
@@ -336,6 +401,7 @@ window.addEventListener("resize", () => { klineChart && klineChart.resize(); his
   }
   try {
     await loadLatest();
+    startAutoRefresh();
   } catch (e2) {
     document.getElementById("grid").innerHTML =
       "<div class='panel'>⚠️ 数据加载失败，可能是 GitHub Pages 正在构建或网络异常，请稍后刷新重试。</div>";

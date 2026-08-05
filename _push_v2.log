@@ -1,0 +1,3 @@
+=== COMMIT ===
+warning: in the working copy of '.github/workflows/update.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
