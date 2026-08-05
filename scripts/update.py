@@ -529,11 +529,31 @@ def analyze(code, name, sector, bars, news):
         else:
             signal, advice = "回避", "空头趋势明确，清仓回避，等待企稳信号"
 
+    # ===== 语义化标签(供前端醒目提示"预判到的机会/风险") =====
+    # 引擎已识别的超跌反转(rev/has_reversal)、上行周期健康回调、过热、破位 等，
+    # 此前只藏在打分明细里，这里提炼为可见标签，避免"算到了却没提示"。
+    tags = []
+    if (has_reversal or rev >= 6) and not overheated:
+        tags.append({"type": "reversal", "level": "warn", "text": "超跌反弹",
+                     "desc": "出现超跌反转信号（MACD绿柱收窄 / RSI低位回升 / 近3日底部抬升），可关注左侧机会"})
+    if up_pullback_add:
+        tags.append({"type": "pullback_add", "level": "good", "text": "回调加仓",
+                     "desc": "上行周期健康回调至支撑位企稳（缩量洗盘、回踩不破），分批加仓良机（破MA60止损）"})
+    elif up_pullback_build:
+        tags.append({"type": "pullback_build", "level": "good", "text": "回调试多",
+                     "desc": "上行趋势中回调，质量尚可，可轻仓试多（破MA60离场）"})
+    if overheated:
+        tags.append({"type": "overheat", "level": "danger", "text": "过热警惕",
+                     "desc": "严重超买 / 交易拥挤（RSI>80 或近10日涨>30%），警惕回落，勿追高"})
+    if trend_env == "down" and chg <= -3:
+        tags.append({"type": "breakdown", "level": "danger", "text": "破位下行",
+                     "desc": "趋势走弱且跌幅偏大，控制仓位、回避为主"})
+
     return {
         "code": code, "name": name, "sector": sector, "style": style,
         "price": round(price, 3), "chg_pct": round(chg, 2),
         "score": score, "signal": signal, "advice": advice,
-        "reasons": reasons, "reversal": round(rev, 1),
+        "reasons": reasons, "reversal": round(rev, 1), "tags": tags,
         "trend_env": trend_env, "in_pullback": bool(in_pullback),
         "pullback_depth": round(pullback_depth, 1), "pullback_quality": round(pq, 1),
         "indicators": {

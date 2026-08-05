@@ -67,6 +67,13 @@
   .ind-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
   .ind-table td { padding: 5px 8px; border-bottom: 1px dashed var(--line); }
   .ind-table td:first-child { color: var(--muted); width: 42%; }
+  .watchbar { margin: 10px 0 4px; padding: 10px 14px; background: #fff7ed; border: 1px solid #ffd8a8; border-radius: 10px; font-size: 13.5px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .watchbar .lead { font-weight: 700; color: #e8590c; margin-right: 2px; }
+  .tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 6px; color: #fff; cursor: default; }
+  .tag-good { background: #2f9e44; }
+  .tag-warn { background: #e8590c; }
+  .tag-danger { background: #e03131; }
 </style>
 </head>
 <body>
@@ -84,6 +91,7 @@
 
   <div class="indices" id="indices"></div>
   <div class="summary" id="summary"></div>
+  <div class="watchbar" id="watch"></div>
   <div class="grid" id="grid"></div>
 
   <div class="flex2">
@@ -122,6 +130,8 @@
 <script>
 const SIG_COLOR = { "加仓": "#e03131", "建仓": "#e8590c", "持有": "#f08c00", "观望": "#868e96", "减仓": "#2f9e44", "回避": "#1864ab" };
 const TENV_COLOR = { "up": "#e03131", "down": "#2f9e44", "range": "#868e96" };
+const TAG_COLOR = { good: "#2f9e44", warn: "#e8590c", danger: "#e03131" };
+const TAG_ICON = { reversal: "🔄", pullback_add: "⬆️", pullback_build: "🔼", overheat: "🔥", breakdown: "⚠️" };
 const TENV_LABEL = { "up": "上行周期", "down": "下行周期", "range": "震荡" };
 let snap = null, indexData = null, currentCode = null;
 let klineChart = null, historyChart = null;
@@ -205,15 +215,25 @@ function renderAll() {
     ["加仓","建仓","持有","观望","减仓","回避"].filter(s => cnt[s])
     .map(s => `<span class="pill" style="background:${SIG_COLOR[s]}">${s} ${cnt[s]}</span>`).join("");
 
+  // 今日信号速览：把带机会/风险标签的板块聚到顶部，让人一眼看到"预判到的信号"
+  const watch = snap.etfs.filter(e => e.tags && e.tags.length).sort((a, b) => b.score - a.score);
+  document.getElementById("watch").innerHTML = watch.length
+    ? `<span class="lead">⚡ 今日信号速览</span>` + watch.map(e =>
+        `<span class="tag tag-${e.tags[0].level}" title="${e.tags.map(t => t.desc).join('；')}">${e.name}·${e.tags.map(t => t.text).join('/')}</span>`).join("")
+    : "";
+
   // 卡片
   const grid = document.getElementById("grid");
   grid.innerHTML = "";
   [...snap.etfs].sort((a, b) => b.score - a.score).forEach(e => {
     const d = document.createElement("div");
     d.className = "card" + (e.code === currentCode ? " active" : "");
+    const tagHtml = (e.tags && e.tags.length) ? `<div class="tags">` + e.tags.map(t =>
+      `<span class="tag tag-${t.level}" title="${t.desc}">${TAG_ICON[t.type] || ''} ${t.text}</span>`).join("") + `</div>` : "";
     d.innerHTML = `
       <div class="row1"><div><span class="name">${e.name}</span><br><span class="code">${e.code} · ${e.sector}</span></div>
       <span><span class="badge" style="background:${SIG_COLOR[e.signal]}">${e.signal}</span><span class="tenv" style="background:${TENV_COLOR[e.trend_env]||'#868e96'}">${TENV_LABEL[e.trend_env]||e.trend_env}</span></span></div>
+      ${tagHtml}
       <div class="row2"><span class="price">${e.price}</span><span class="chg">${fmtChg(e.chg_pct)}</span></div>
       <div class="scorebar"><i style="width:${e.score}%;background:${scoreColor(e.score)}"></i></div>
       <div class="scoretxt"><span>综合评分</span><b style="color:${scoreColor(e.score)}">${e.score}</b></div>`;
@@ -252,6 +272,8 @@ function selectEtf(code) {
       <b style="font-size:18px;color:${scoreColor(e.score)}">评分 ${e.score}</b>
     </div>
     <div class="advice">💡 ${e.advice}</div>
+    ${(e.tags && e.tags.length) ? `<div class="tags" style="margin:8px 0">` + e.tags.map(t =>
+      `<span class="tag tag-${t.level}" title="${t.desc}">${TAG_ICON[t.type] || ''} ${t.text}</span>`).join("") + `</div>` : ""}
     <h3>打分明细（思考过程）</h3>
     <ul class="reasons">` +
     e.reasons.map(r => {
