@@ -74,6 +74,10 @@
   .tag-good { background: #2f9e44; }
   .tag-warn { background: #e8590c; }
   .tag-danger { background: #e03131; }
+  .pressure { background: #f1f3f5; border: 1px solid #dee2e6; border-radius: 10px; padding: 10px 14px; font-size: 13px; line-height: 1.7; margin: 8px 0; }
+  .pressure b { color: #1864ab; }
+  .pressrow { font-size: 12.5px; color: #495057; margin-top: 6px; line-height: 1.5; }
+  .pressrow b { color: #1864ab; }
 </style>
 </head>
 <body>
@@ -143,6 +147,12 @@ let autoTimer = null;
 function fmtChg(v) {
   const cls = v >= 0 ? "up" : "down";
   return `<span class="${cls}">${v >= 0 ? "+" : ""}${v.toFixed(2)}%</span>`;
+}
+function pressureLine(e) {
+  const p = e && e.pressure;
+  if (!p) return "";
+  if (p.nearest) return `📈 上方压力 <b>${p.nearest}</b>（${p.nearest_label}，+${p.gap_pct}%）`;
+  return `📈 ${p.desc}`;
 }
 function scoreColor(s) {
   if (s >= 70) return "#e03131";
@@ -236,7 +246,8 @@ function renderAll() {
       ${tagHtml}
       <div class="row2"><span class="price">${e.price}</span><span class="chg">${fmtChg(e.chg_pct)}</span></div>
       <div class="scorebar"><i style="width:${e.score}%;background:${scoreColor(e.score)}"></i></div>
-      <div class="scoretxt"><span>综合评分</span><b style="color:${scoreColor(e.score)}">${e.score}</b></div>`;
+      <div class="scoretxt"><span>综合评分</span><b style="color:${scoreColor(e.score)}">${e.score}</b></div>
+      <div class="pressrow">${pressureLine(e)}</div>`;
     d.onclick = () => selectEtf(e.code);
     grid.appendChild(d);
   });
@@ -274,6 +285,7 @@ function selectEtf(code) {
     <div class="advice">💡 ${e.advice}</div>
     ${(e.tags && e.tags.length) ? `<div class="tags" style="margin:8px 0">` + e.tags.map(t =>
       `<span class="tag tag-${t.level}" title="${t.desc}">${TAG_ICON[t.type] || ''} ${t.text}</span>`).join("") + `</div>` : ""}
+    <div class="pressure">📈 <b>上方压力位分析：</b>${(e.pressure && e.pressure.desc) ? e.pressure.desc : "—"}</div>
     <h3>打分明细（思考过程）</h3>
     <ul class="reasons">` +
     e.reasons.map(r => {

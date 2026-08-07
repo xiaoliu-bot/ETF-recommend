@@ -5,6 +5,7 @@
 每次运行: 拉取K线 -> 计算指标 -> 多因子打分 -> 结合新闻情绪 -> 产出信号 -> 落盘快照(支持回溯)
 用法: python update.py
 """
+import glob
 import json
 import os
 import random
@@ -18,33 +19,112 @@ DATA_DIR = os.path.join(BASE, "data")
 SNAP_DIR = os.path.join(DATA_DIR, "snapshots")
 os.makedirs(SNAP_DIR, exist_ok=True)
 
-# ---------------- ETF 池 ----------------
+# ---------------- ETF 池（全面覆盖：宽基/金融/消费/医药/科技/新能源/军工/周期/制造/主题/跨境） ----------------
 ETF_LIST = [
+    # 宽基指数
+    ("510300", "沪深300ETF", "沪深300"),
+    ("510050", "上证50ETF", "上证50"),
+    ("510500", "中证500ETF", "中证500"),
+    ("159915", "创业板ETF", "创业板"),
+    ("588000", "科创50ETF", "科创50"),
+    ("512100", "中证1000ETF", "中证1000"),
+    # 金融
     ("512000", "券商ETF", "券商"),
+    ("512800", "银行ETF", "银行"),
+    ("512070", "保险ETF", "保险"),
+    ("512200", "房地产ETF", "地产"),
+    ("159851", "金融科技ETF", "金融科技"),
+    # 消费
+    ("159928", "消费ETF", "消费"),
+    ("512690", "酒ETF", "白酒"),
+    ("515170", "食品饮料ETF", "食品饮料"),
+    ("159996", "家电ETF", "家电"),
+    ("159865", "养殖ETF", "养殖"),
+    ("159825", "农业ETF", "农业"),
+    ("159766", "旅游ETF", "旅游"),
+    # 医药
+    ("512010", "医药ETF", "医药"),
+    ("512170", "医疗ETF", "医疗"),
+    ("159992", "创新药ETF", "创新药"),
+    ("159837", "生物科技ETF", "生物科技"),
+    ("560080", "中药ETF", "中药"),
+    # 科技成长
     ("512480", "半导体ETF", "半导体"),
     ("159995", "芯片ETF", "芯片"),
-    ("512010", "医药ETF", "医药"),
-    ("512690", "酒ETF", "白酒"),
+    ("515000", "科技ETF", "科技"),
+    ("159819", "人工智能ETF", "人工智能"),
+    ("515050", "5GETF", "5G"),
+    ("516510", "云计算ETF", "云计算"),
+    ("515230", "软件ETF", "软件"),
+    ("159998", "计算机ETF", "计算机"),
+    ("515880", "通信ETF", "通信"),
+    ("159997", "电子ETF", "电子"),
+    ("562500", "机器人ETF", "机器人"),
+    ("159667", "工业母机ETF", "工业母机"),
+    # 新能源制造
     ("515030", "新能源车ETF", "新能源车"),
     ("515790", "光伏ETF", "光伏"),
+    ("159755", "电池ETF", "电池"),
+    ("159840", "锂电池ETF", "锂电池"),
+    # 国防
     ("512660", "军工ETF", "军工"),
-    ("512800", "银行ETF", "银行"),
+    ("512670", "国防ETF", "国防"),
+    # 周期资源
     ("512400", "有色金属ETF", "有色"),
     ("515220", "煤炭ETF", "煤炭"),
-    ("512200", "房地产ETF", "地产"),
-    ("515000", "科技ETF", "科技"),
-    ("159928", "消费ETF", "消费"),
-    ("159819", "人工智能ETF", "人工智能"),
+    ("515210", "钢铁ETF", "钢铁"),
+    ("516020", "化工ETF", "化工"),
+    ("561360", "石油ETF", "石油"),
+    ("159697", "油气ETF", "油气"),
+    ("516780", "稀土ETF", "稀土"),
+    ("518880", "黄金ETF", "黄金"),
+    # 制造基建
+    ("159886", "机械ETF", "机械"),
+    ("516950", "基建ETF", "基建"),
+    ("159745", "建材ETF", "建材"),
+    ("159611", "电力ETF", "电力"),
+    ("159669", "绿电ETF", "绿电"),
+    ("516110", "汽车ETF", "汽车"),
+    # 主题
+    ("512980", "传媒ETF", "传媒"),
+    ("159869", "游戏ETF", "游戏"),
+    ("513360", "教育ETF", "教育"),
+    ("516910", "物流ETF", "物流"),
+    ("515400", "大数据ETF", "大数据"),
+    ("516330", "物联网ETF", "物联网"),
+    # 跨境/商品
+    ("513100", "纳指ETF", "纳指"),
+    ("513500", "标普500ETF", "标普500"),
+    ("513050", "中概互联网ETF", "中概互联"),
+    ("513180", "恒生科技ETF", "恒生科技"),
+    ("159985", "豆粕ETF", "豆粕"),
 ]
 
 # ---------------- 板块风格与差异化权重 ----------------
 # 趋势型(trend): 慢变量、靠均线排列，趋势位置权重高，新闻修正温和(±8)
 # 动量型(momentum): 快变量、靠催化与反转，趋势位置惩罚减半、反转/催化加权，新闻修正放大(±15)
 STYLE = {
-    "券商": "trend", "银行": "trend", "煤炭": "trend", "有色": "trend",
-    "地产": "trend", "消费": "trend", "白酒": "trend", "医药": "trend",
-    "半导体": "momentum", "芯片": "momentum", "科技": "momentum",
-    "人工智能": "momentum", "新能源车": "momentum", "光伏": "momentum", "军工": "momentum",
+    # 趋势型：慢变量、靠均线排列，趋势位置权重高，新闻修正温和
+    "沪深300": "trend", "上证50": "trend", "中证500": "trend", "创业板": "trend",
+    "科创50": "trend", "中证1000": "trend",
+    "券商": "trend", "银行": "trend", "保险": "trend", "地产": "trend", "金融科技": "trend",
+    "消费": "trend", "白酒": "trend", "食品饮料": "trend", "家电": "trend", "养殖": "trend",
+    "农业": "trend", "旅游": "trend",
+    "医药": "trend", "医疗": "trend", "中药": "trend",
+    "有色": "trend", "煤炭": "trend", "钢铁": "trend", "化工": "trend", "石油": "trend",
+    "油气": "trend", "稀土": "trend", "黄金": "trend",
+    "机械": "trend", "基建": "trend", "建材": "trend", "电力": "trend", "绿电": "trend",
+    "汽车": "trend", "物流": "trend", "标普500": "trend", "豆粕": "trend",
+    # 动量型：快变量、靠催化与反转，趋势位置惩罚减半，反转/催化加权，新闻放大
+    "创新药": "momentum", "生物科技": "momentum",
+    "半导体": "momentum", "芯片": "momentum", "科技": "momentum", "人工智能": "momentum",
+    "5G": "momentum", "云计算": "momentum", "软件": "momentum", "计算机": "momentum",
+    "通信": "momentum", "电子": "momentum", "机器人": "momentum", "工业母机": "momentum",
+    "新能源车": "momentum", "光伏": "momentum", "电池": "momentum", "锂电池": "momentum",
+    "军工": "momentum", "国防": "momentum",
+    "传媒": "momentum", "游戏": "momentum", "教育": "momentum",
+    "大数据": "momentum", "物联网": "momentum",
+    "纳指": "momentum", "中概互联": "momentum", "恒生科技": "momentum",
 }
 WEIGHTS = {
     "trend":    {"trend_pos": 1.0, "macd_cross": 1.0, "rsi": 1.0, "kdj": 1.0,
@@ -326,6 +406,54 @@ def news_score(sector, news, style="trend"):
 
 
 # ---------------- 信号引擎 ----------------
+def analyze_pressure(bars, price, ma20v, ma60v):
+    """识别上方压力位(供技术面"上攻遇阻"判断)。
+    候选来源：上方均线(MA20/MA60)、近60日局部高点、20/60日最高价。
+    只保留现价之上的(overhead)，按距现价由近到远排序，取最近的3档作为压力位。"""
+    try:
+        highs = [b[3] for b in bars]
+        n = len(highs)
+        cands = []
+        if ma20v and ma20v > price:
+            cands.append((float(ma20v), "MA20"))
+        if ma60v and ma60v > price:
+            cands.append((float(ma60v), "MA60"))
+        lo = max(0, n - 60)
+        seg = highs[lo:]
+        for j in range(1, len(seg) - 1):
+            if seg[j] > seg[j - 1] and seg[j] >= seg[j + 1] and seg[j] > price:
+                cands.append((float(seg[j]), "近期高点"))
+        h20 = max(highs[max(0, n - 20):]) if n >= 20 else (max(highs) if highs else price)
+        h60 = max(highs[max(0, n - 60):]) if n >= 60 else (max(highs) if highs else price)
+        if h20 > price:
+            cands.append((float(h20), "20日高"))
+        if h60 > price and abs(h60 - h20) > price * 0.005:
+            cands.append((float(h60), "60日高"))
+        over = [c for c in cands if c[0] > price]
+        over.sort(key=lambda c: c[0] - price)
+        levels = []
+        for lvl, lab in over:
+            if any(abs(lvl - x[0]) / price < 0.004 for x in levels):
+                continue
+            levels.append((round(lvl, 3), lab))
+            if len(levels) >= 3:
+                break
+        if levels:
+            nearest, nlab = levels[0]
+            gap = (nearest - price) / price * 100
+            parts = [f"{lab}{lv:.3f}" for lv, lab in levels]
+            desc = (f"上方压力位(由近到远)：{'、'.join(parts)}；"
+                    f"最近一档为{nlab} {nearest:.3f}，距现价 +{gap:.1f}%，上攻需放量突破确认")
+            return {"levels": [{"price": lv, "label": lab} for lv, lab in levels],
+                    "nearest": nearest, "nearest_label": nlab,
+                    "gap_pct": round(gap, 1), "desc": desc}
+        return {"levels": [], "nearest": None, "nearest_label": "", "gap_pct": None,
+                "desc": "上方暂无明显压力位，价格处于阶段高位或创出新高，注意追高风险与乖离"}
+    except Exception:
+        return {"levels": [], "nearest": None, "nearest_label": "", "gap_pct": None,
+                "desc": "压力位计算暂不可用"}
+
+
 def analyze(code, name, sector, bars, news):
     style = STYLE.get(sector, "trend")
     w = WEIGHTS[style]
@@ -444,6 +572,13 @@ def analyze(code, name, sector, bars, news):
     elif bl[i] and price < bl[i]:
         add(3, "跌破布林下轨，超跌状态")
 
+    # ===== 上方压力位分析(技术面"上攻遇阻"判断) =====
+    pressure = analyze_pressure(bars, price, ma20[i], ma60[i])
+    reasons.append({"text": "📈 " + pressure["desc"], "delta": 0})
+    _over = (rv is not None and rv > 80) or (i >= 10 and (price / closes[i - 10] - 1) > 0.30)
+    if _over and pressure["nearest"] and pressure["gap_pct"] is not None and pressure["gap_pct"] < 1.5:
+        add(-3, f"价格已过热且逼近强压力位（{pressure['nearest_label']} {pressure['nearest']}），上攻遇阻，追高易套，等回踩确认")
+
     # ===== 超跌反转因子(核心修复动量型踏空) =====
     rev = 0.0
     if i >= 1 and hist[i] < 0 and hist[i] > hist[i - 1]:
@@ -556,6 +691,7 @@ def analyze(code, name, sector, bars, news):
         "reasons": reasons, "reversal": round(rev, 1), "tags": tags,
         "trend_env": trend_env, "in_pullback": bool(in_pullback),
         "pullback_depth": round(pullback_depth, 1), "pullback_quality": round(pq, 1),
+        "pressure": pressure,
         "indicators": {
             "ma5": rnd(ma5[i]), "ma10": rnd(ma10[i]), "ma20": rnd(ma20[i]), "ma60": rnd(ma60[i]),
             "rsi": rnd(rv, 1),
@@ -588,7 +724,7 @@ METHODOLOGY = (
     "回撤3%~15%且仍在MA60上方，且呈缩量洗盘、回踩20日线不破、幅度温和、长下影企稳等健康特征，则识别为"
     "'上升趋势中的回调'而非'趋势反转'，信号由减仓/观望翻转为加仓/建仓(破MA60止损离场)。下行/震荡周期不抄底，保持右侧纪律。"
     "技术维度：趋势环境与位置、动量(MACD金死叉与红绿柱、RSI、KDJ)、量能(量比方向)、乖离(布林带)、"
-    "超跌反转、上行回调质量。映射：≥70加仓｜60-70建仓/持有｜45-60观望｜35-45减仓｜<35回避。"
+    "超跌反转、上行回调质量、上方压力位(上方均线/近期高点/阶段最高，衡量上攻遇阻)。映射：≥70加仓｜60-70建仓/持有｜45-60观望｜35-45减仓｜<35回避。"
     "设计取向：趋势跟踪为基，兼顾左侧反转与上行回调加仓，规避追涨杀跌；所有信号仅供研究参考，不构成投资建议。"
 )
 def load_replay_news(asof):
@@ -601,6 +737,41 @@ def load_replay_news(asof):
             return json.load(f)
     except Exception:
         return []
+
+
+def rebuild_index(data_dir):
+    """从磁盘 snapshots/ 完整重建 index.json 的 runs[]（索引是派生产物，始终以快照文件为准，
+    绝不依赖可能被覆盖/截断的旧 index.json）。同时把最新快照回写为 latest.json。"""
+    snap_dir = os.path.join(data_dir, "snapshots")
+    if not os.path.isdir(snap_dir):
+        print(f"[rebuild_index] 警告: 找不到快照目录 {snap_dir}")
+        return
+    runs = []
+    newest = None
+    for f in sorted(glob.glob(os.path.join(snap_dir, "*.json"))):
+        try:
+            snap = json.load(open(f, "r", encoding="utf-8"))
+        except Exception as e:
+            print(f"[rebuild_index] 跳过损坏快照 {os.path.basename(f)}: {e}")
+            continue
+        etfs = snap.get("etfs", [])
+        runs.append({
+            "file": "snapshots/" + os.path.basename(f),
+            "time": snap.get("run_time", ""),
+            "label": snap.get("label", ""),
+            "signals": {e["code"]: {"signal": e.get("signal"), "score": e.get("score"),
+                                    "price": e.get("price"), "chg": e.get("chg_pct")}
+                        for e in etfs if "code" in e},
+        })
+        if newest is None or snap.get("run_time", "") >= newest.get("run_time", ""):
+            newest = snap
+    runs.sort(key=lambda r: r.get("time", ""))
+    with open(os.path.join(data_dir, "index.json"), "w", encoding="utf-8") as f:
+        json.dump({"runs": runs}, f, ensure_ascii=False, indent=2)
+    if newest is not None:
+        with open(os.path.join(data_dir, "latest.json"), "w", encoding="utf-8") as f:
+            json.dump(newest, f, ensure_ascii=False)
+    print(f"[rebuild_index] 已重建索引: {len(runs)} 条 runs -> {os.path.join(data_dir, 'index.json')}")
 
 
 def main(asof=None):
@@ -693,25 +864,8 @@ def main(asof=None):
     with open(os.path.join(DATA_DIR, "latest.json"), "w", encoding="utf-8") as f:
         json.dump(snapshot, f, ensure_ascii=False)
 
-    idx_path = os.path.join(DATA_DIR, "index.json")
-    idx = {"runs": []}
-    if os.path.exists(idx_path):
-        try:
-            with open(idx_path, "r", encoding="utf-8") as f:
-                idx = json.load(f)
-        except Exception:
-            pass
-    idx["runs"] = [r for r in idx.get("runs", []) if r.get("file") != fname]
-    idx["runs"].append({
-        "file": fname,
-        "time": snapshot["run_time"],
-        "label": label,
-        "signals": {e["code"]: {"signal": e["signal"], "score": e["score"],
-                                "price": e["price"], "chg": e["chg_pct"]} for e in etfs},
-    })
-    idx["runs"] = sorted(idx["runs"], key=lambda r: r["time"])[-120:]
-    with open(idx_path, "w", encoding="utf-8") as f:
-        json.dump(idx, f, ensure_ascii=False)
+    # 索引与 latest 始终以磁盘快照为准重建，避免任何"覆盖式拷贝"导致索引残缺
+    rebuild_index(DATA_DIR)
 
     print(f"\n快照已保存: {fname} | ETF {len(etfs)} 只 | 失败 {len(failed)}")
 
@@ -720,7 +874,12 @@ if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--asof", help="历史回放锚定日期 YYYY-MM-DD（示例/测试用）")
+    ap.add_argument("--rebuild-index", action="store_true",
+                    help="仅从 snapshots/ 重建 index.json 与 latest.json，不拉取行情")
     args = ap.parse_args()
+    if args.rebuild_index:
+        rebuild_index(DATA_DIR)
+        raise SystemExit(0)
     a = args.asof.strip() if args.asof else None
     if a:
         try:

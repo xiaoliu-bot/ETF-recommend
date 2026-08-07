@@ -1,1 +1,2990 @@
-{"runs": [{"file": "snapshots/2026-07-30_1552.json", "time": "2026-07-30 15:52:35", "label": "收盘后", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.529, "chg": 0.0}, "512480": {"signal": "回避", "score": 21.0, "price": 0.958, "chg": -6.72}, "159995": {"signal": "回避", "score": 25.0, "price": 1.08, "chg": -6.25}, "512010": {"signal": "加仓", "score": 76.0, "price": 0.38, "chg": 1.88}, "512690": {"signal": "加仓", "score": 89.0, "price": 0.452, "chg": 3.67}, "515030": {"signal": "观望", "score": 51.6, "price": 1.603, "chg": -0.12}, "515790": {"signal": "观望", "score": 50.8, "price": 0.804, "chg": -1.47}, "512660": {"signal": "观望", "score": 45.2, "price": 1.073, "chg": -1.92}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 2.56}, "512400": {"signal": "减仓", "score": 40.0, "price": 1.75, "chg": -1.02}, "515220": {"signal": "持有", "score": 66.0, "price": 1.2, "chg": 0.0}, "512200": {"signal": "观望", "score": 56.0, "price": 1.174, "chg": -0.34}, "515000": {"signal": "观望", "score": 24.0, "price": 1.171, "chg": -5.11}, "159928": {"signal": "加仓", "score": 96.0, "price": 0.699, "chg": 2.95}, "159819": {"signal": "观望", "score": 32.0, "price": 1.67, "chg": -6.29}}}, {"file": "snapshots/2026-07-30_2053.json", "time": "2026-07-30 20:53:50", "label": "收盘后", "signals": {"512000": {"signal": "减仓", "score": 39.0, "price": 0.529, "chg": 0.0}, "512480": {"signal": "回避", "score": 15.0, "price": 0.958, "chg": -6.72}, "159995": {"signal": "回避", "score": 15.0, "price": 1.08, "chg": -6.25}, "512010": {"signal": "建仓", "score": 67.0, "price": 0.376, "chg": 0.8}, "512690": {"signal": "加仓", "score": 87.0, "price": 0.452, "chg": 3.67}, "515790": {"signal": "减仓", "score": 37.0, "price": 0.804, "chg": -1.47}, "512800": {"signal": "加仓", "score": 74.0, "price": 0.84, "chg": 2.56}, "512400": {"signal": "减仓", "score": 37.0, "price": 1.747, "chg": -1.19}, "159819": {"signal": "回避", "score": 18.0, "price": 1.67, "chg": -6.29}}}, {"file": "snapshots/2026-07-30_2102.json", "time": "2026-07-30 21:02:52", "label": "收盘后", "signals": {"512000": {"signal": "观望", "score": 45.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "回避", "score": 12.0, "price": 0.96, "chg": -6.52}, "159995": {"signal": "回避", "score": 15.0, "price": 1.08, "chg": -6.25}, "512010": {"signal": "加仓", "score": 70.0, "price": 0.38, "chg": 1.88}, "512690": {"signal": "加仓", "score": 87.0, "price": 0.452, "chg": 3.67}, "515030": {"signal": "减仓", "score": 37.0, "price": 1.603, "chg": -0.12}, "515790": {"signal": "减仓", "score": 40.0, "price": 0.804, "chg": -1.47}, "512660": {"signal": "回避", "score": 28.0, "price": 1.073, "chg": -1.92}, "512800": {"signal": "加仓", "score": 77.0, "price": 0.84, "chg": 2.56}, "512400": {"signal": "减仓", "score": 40.0, "price": 1.75, "chg": -1.02}, "515220": {"signal": "持有", "score": 64.0, "price": 1.2, "chg": 0.0}, "512200": {"signal": "观望", "score": 53.0, "price": 1.174, "chg": -0.34}, "515000": {"signal": "回避", "score": 13.0, "price": 1.171, "chg": -5.11}, "159928": {"signal": "加仓", "score": 94.0, "price": 0.699, "chg": 2.95}, "159819": {"signal": "回避", "score": 21.0, "price": 1.67, "chg": -6.29}}}, {"file": "snapshots/2026-07-30_2248.json", "time": "2026-07-30 22:48:43", "label": "收盘后", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "回避", "score": 21.0, "price": 0.96, "chg": -6.52}, "159995": {"signal": "回避", "score": 25.0, "price": 1.08, "chg": -6.25}, "512010": {"signal": "加仓", "score": 76.0, "price": 0.38, "chg": 1.88}, "512690": {"signal": "加仓", "score": 89.0, "price": 0.452, "chg": 3.67}, "515030": {"signal": "观望", "score": 51.6, "price": 1.603, "chg": -0.12}, "515790": {"signal": "观望", "score": 50.8, "price": 0.804, "chg": -1.47}, "512660": {"signal": "观望", "score": 45.2, "price": 1.073, "chg": -1.92}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 2.56}, "512400": {"signal": "减仓", "score": 40.0, "price": 1.75, "chg": -1.02}, "515220": {"signal": "持有", "score": 66.0, "price": 1.2, "chg": 0.0}, "512200": {"signal": "观望", "score": 56.0, "price": 1.174, "chg": -0.34}, "515000": {"signal": "观望", "score": 24.0, "price": 1.171, "chg": -5.11}, "159928": {"signal": "加仓", "score": 96.0, "price": 0.699, "chg": 2.95}, "159819": {"signal": "观望", "score": 32.0, "price": 1.67, "chg": -6.29}}}, {"file": "snapshots/2026-07-30_2315.json", "time": "2026-07-30 23:15:31", "label": "收盘后", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "回避", "score": 21.0, "price": 0.96, "chg": -6.52}, "159995": {"signal": "回避", "score": 25.0, "price": 1.08, "chg": -6.25}, "512010": {"signal": "加仓", "score": 76.0, "price": 0.38, "chg": 1.88}, "512690": {"signal": "加仓", "score": 89.0, "price": 0.452, "chg": 3.67}, "515030": {"signal": "观望", "score": 51.6, "price": 1.603, "chg": -0.12}, "515790": {"signal": "观望", "score": 50.8, "price": 0.804, "chg": -1.47}, "512660": {"signal": "观望", "score": 45.2, "price": 1.073, "chg": -1.92}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 2.56}, "512400": {"signal": "减仓", "score": 40.0, "price": 1.75, "chg": -1.02}, "515220": {"signal": "持有", "score": 66.0, "price": 1.2, "chg": 0.0}, "512200": {"signal": "观望", "score": 56.0, "price": 1.174, "chg": -0.34}, "515000": {"signal": "观望", "score": 24.0, "price": 1.171, "chg": -5.11}, "159928": {"signal": "加仓", "score": 96.0, "price": 0.699, "chg": 2.95}, "159819": {"signal": "观望", "score": 32.0, "price": 1.67, "chg": -6.29}}}, {"file": "snapshots/2026-07-31_0759.json", "time": "2026-07-31 07:59:52", "label": "午盘", "signals": {"512000": {"signal": "加仓", "score": 56.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "减仓", "score": 44.4, "price": 0.99, "chg": 3.34}, "159995": {"signal": "减仓", "score": 44.4, "price": 1.12, "chg": 3.7}, "512010": {"signal": "建仓", "score": 69.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.816, "chg": 1.49}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 0.0}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.79, "chg": 2.46}, "515220": {"signal": "持有", "score": 61.0, "price": 1.2, "chg": -0.08}, "512200": {"signal": "建仓", "score": 60.5, "price": 1.19, "chg": 1.36}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.22, "chg": 4.18}, "159928": {"signal": "加仓", "score": 84.0, "price": 0.7, "chg": 0.14}, "159819": {"signal": "观望", "score": 48.2, "price": 1.765, "chg": 5.69}}}, {"file": "snapshots/2026-07-31_0813.json", "time": "2026-07-31 08:13:33", "label": "午盘", "signals": {"512000": {"signal": "加仓", "score": 56.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "减仓", "score": 44.4, "price": 0.99, "chg": 3.34}, "159995": {"signal": "减仓", "score": 44.4, "price": 1.12, "chg": 3.7}, "512010": {"signal": "建仓", "score": 69.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.816, "chg": 1.49}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 0.0}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.79, "chg": 2.46}, "515220": {"signal": "持有", "score": 61.0, "price": 1.2, "chg": -0.08}, "512200": {"signal": "建仓", "score": 60.5, "price": 1.19, "chg": 1.36}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.22, "chg": 4.18}, "159928": {"signal": "加仓", "score": 84.0, "price": 0.7, "chg": 0.14}, "159819": {"signal": "观望", "score": 48.2, "price": 1.765, "chg": 5.69}}}, {"file": "snapshots/2026-07-31_0833.json", "time": "2026-07-31 08:33:59", "label": "午盘", "signals": {"512000": {"signal": "加仓", "score": 56.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "减仓", "score": 44.4, "price": 0.99, "chg": 3.34}, "159995": {"signal": "减仓", "score": 44.4, "price": 1.12, "chg": 3.7}, "512010": {"signal": "建仓", "score": 69.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.816, "chg": 1.49}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 0.0}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.79, "chg": 2.46}, "515220": {"signal": "持有", "score": 61.0, "price": 1.2, "chg": -0.08}, "512200": {"signal": "建仓", "score": 60.5, "price": 1.19, "chg": 1.36}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.22, "chg": 4.18}, "159928": {"signal": "加仓", "score": 84.0, "price": 0.7, "chg": 0.14}, "159819": {"signal": "观望", "score": 48.2, "price": 1.765, "chg": 5.69}}}, {"file": "snapshots/2026-07-31_0859.json", "time": "2026-07-31 08:59:42", "label": "午盘", "signals": {"512000": {"signal": "加仓", "score": 56.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "减仓", "score": 44.4, "price": 0.99, "chg": 3.34}, "159995": {"signal": "减仓", "score": 44.4, "price": 1.118, "chg": 3.52}, "512010": {"signal": "建仓", "score": 69.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.816, "chg": 1.49}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 0.0}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.79, "chg": 2.46}, "515220": {"signal": "持有", "score": 61.0, "price": 1.2, "chg": -0.08}, "512200": {"signal": "建仓", "score": 60.5, "price": 1.19, "chg": 1.36}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.22, "chg": 4.18}, "159928": {"signal": "加仓", "score": 84.0, "price": 0.7, "chg": 0.14}, "159819": {"signal": "观望", "score": 48.2, "price": 1.765, "chg": 5.69}}}, {"file": "snapshots/2026-07-31_1139.json", "time": "2026-07-31 11:39:43", "label": "午盘", "signals": {"512000": {"signal": "加仓", "score": 56.0, "price": 0.529, "chg": 0.0}, "512480": {"signal": "减仓", "score": 44.4, "price": 0.99, "chg": 3.34}, "159995": {"signal": "减仓", "score": 44.4, "price": 1.118, "chg": 3.52}, "512010": {"signal": "建仓", "score": 69.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.816, "chg": 1.49}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 0.0}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.792, "chg": 2.58}, "515220": {"signal": "持有", "score": 61.0, "price": 1.199, "chg": -0.17}, "512200": {"signal": "观望", "score": 57.5, "price": 1.188, "chg": 1.19}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.219, "chg": 4.1}, "159928": {"signal": "加仓", "score": 84.0, "price": 0.7, "chg": 0.14}, "159819": {"signal": "观望", "score": 48.2, "price": 1.765, "chg": 5.69}}}, {"file": "snapshots/2026-07-31_1219.json", "time": "2026-07-31 12:19:40", "label": "午盘", "signals": {"512000": {"signal": "加仓", "score": 55.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "减仓", "score": 39.4, "price": 1.02, "chg": 6.47}, "159995": {"signal": "减仓", "score": 39.4, "price": 1.15, "chg": 6.48}, "512010": {"signal": "建仓", "score": 68.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.822, "chg": 2.24}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 81.0, "price": 0.82, "chg": -2.38}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.79, "chg": 2.46}, "515220": {"signal": "持有", "score": 60.0, "price": 1.19, "chg": -0.92}, "512200": {"signal": "观望", "score": 59.5, "price": 1.19, "chg": 1.36}, "515000": {"signal": "减仓", "score": 44.2, "price": 1.24, "chg": 5.89}, "159928": {"signal": "加仓", "score": 82.0, "price": 0.69, "chg": -1.29}, "159819": {"signal": "观望", "score": 48.2, "price": 1.794, "chg": 7.43}}}, {"file": "snapshots/2026-07-31_1247.json", "time": "2026-07-31 12:47:23", "label": "午盘", "signals": {"512000": {"signal": "加仓", "score": 55.0, "price": 0.53, "chg": 0.19}, "512480": {"signal": "减仓", "score": 39.4, "price": 1.02, "chg": 6.47}, "159995": {"signal": "减仓", "score": 39.4, "price": 1.15, "chg": 6.48}, "512010": {"signal": "建仓", "score": 68.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.822, "chg": 2.24}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 81.0, "price": 0.82, "chg": -2.38}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.79, "chg": 2.46}, "515220": {"signal": "持有", "score": 60.0, "price": 1.19, "chg": -0.92}, "512200": {"signal": "观望", "score": 59.5, "price": 1.19, "chg": 1.36}, "515000": {"signal": "减仓", "score": 44.2, "price": 1.24, "chg": 5.89}, "159928": {"signal": "加仓", "score": 82.0, "price": 0.69, "chg": -1.29}, "159819": {"signal": "观望", "score": 48.2, "price": 1.794, "chg": 7.43}}}, {"file": "snapshots/2026-07-31_1316.json", "time": "2026-07-31 13:16:50", "label": "尾盘", "signals": {"512000": {"signal": "加仓", "score": 56.0, "price": 0.529, "chg": 0.0}, "512480": {"signal": "减仓", "score": 44.4, "price": 0.99, "chg": 3.34}, "159995": {"signal": "减仓", "score": 44.4, "price": 1.118, "chg": 3.52}, "512010": {"signal": "建仓", "score": 69.0, "price": 0.38, "chg": 1.06}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.44}, "515030": {"signal": "观望", "score": 54.0, "price": 1.619, "chg": 1.0}, "515790": {"signal": "观望", "score": 59.6, "price": 0.816, "chg": 1.49}, "512660": {"signal": "持有", "score": 64.0, "price": 1.093, "chg": 1.86}, "512800": {"signal": "加仓", "score": 87.0, "price": 0.84, "chg": 0.0}, "512400": {"signal": "建仓", "score": 63.5, "price": 1.792, "chg": 2.58}, "515220": {"signal": "持有", "score": 61.0, "price": 1.199, "chg": -0.17}, "512200": {"signal": "观望", "score": 57.5, "price": 1.188, "chg": 1.19}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.219, "chg": 4.1}, "159928": {"signal": "加仓", "score": 84.0, "price": 0.7, "chg": 0.14}, "159819": {"signal": "观望", "score": 48.2, "price": 1.765, "chg": 5.69}}}, {"file": "snapshots/2026-08-03_1347.json", "time": "2026-08-03 13:47:43", "label": "尾盘", "signals": {"512000": {"signal": "加仓", "score": 47.0, "price": 0.527, "chg": -0.38}, "512480": {"signal": "减仓", "score": 37.0, "price": 0.92, "chg": -7.26}, "159995": {"signal": "观望", "score": 33.0, "price": 1.04, "chg": -6.98}, "512010": {"signal": "观望", "score": 56.0, "price": 0.37, "chg": -1.86}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.45, "chg": -0.66}, "515030": {"signal": "观望", "score": 51.6, "price": 1.614, "chg": -0.31}, "515790": {"signal": "观望", "score": 53.8, "price": 0.832, "chg": 1.96}, "512660": {"signal": "观望", "score": 58.2, "price": 1.101, "chg": 0.73}, "512800": {"signal": "加仓", "score": 82.0, "price": 0.83, "chg": -0.72}, "512400": {"signal": "观望", "score": 55.0, "price": 1.778, "chg": -0.78}, "515220": {"signal": "观望", "score": 52.0, "price": 1.176, "chg": -1.92}, "512200": {"signal": "建仓", "score": 61.0, "price": 1.194, "chg": 0.51}, "515000": {"signal": "减仓", "score": 35.4, "price": 1.168, "chg": -4.18}, "159928": {"signal": "加仓", "score": 79.0, "price": 0.69, "chg": -1.0}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.721, "chg": -2.49}}}, {"file": "snapshots/2026-08-03_1607.json", "time": "2026-08-03 16:07:46", "label": "收盘后", "signals": {"512000": {"signal": "加仓", "score": 47.0, "price": 0.527, "chg": -0.38}, "512480": {"signal": "减仓", "score": 37.0, "price": 0.921, "chg": -7.16}, "159995": {"signal": "观望", "score": 33.0, "price": 1.039, "chg": -7.07}, "512010": {"signal": "建仓", "score": 66.0, "price": 0.374, "chg": -0.8}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.448, "chg": -1.1}, "515030": {"signal": "观望", "score": 51.6, "price": 1.614, "chg": -0.31}, "515790": {"signal": "观望", "score": 53.8, "price": 0.832, "chg": 1.96}, "512660": {"signal": "观望", "score": 58.2, "price": 1.101, "chg": 0.73}, "512800": {"signal": "加仓", "score": 82.0, "price": 0.831, "chg": -0.6}, "512400": {"signal": "观望", "score": 55.0, "price": 1.778, "chg": -0.78}, "515220": {"signal": "观望", "score": 52.0, "price": 1.176, "chg": -1.92}, "512200": {"signal": "建仓", "score": 61.0, "price": 1.194, "chg": 0.51}, "515000": {"signal": "减仓", "score": 35.4, "price": 1.168, "chg": -4.18}, "159928": {"signal": "加仓", "score": 79.0, "price": 0.69, "chg": -1.0}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.721, "chg": -2.49}}}, {"file": "snapshots/2026-08-03_1642.json", "time": "2026-08-03 16:42:26", "label": "收盘后", "signals": {"512000": {"signal": "加仓", "score": 47.0, "price": 0.527, "chg": -0.38}, "512480": {"signal": "减仓", "score": 37.0, "price": 0.921, "chg": -7.16}, "159995": {"signal": "观望", "score": 33.0, "price": 1.039, "chg": -7.07}, "512010": {"signal": "建仓", "score": 66.0, "price": 0.374, "chg": -0.8}, "512690": {"signal": "加仓", "score": 82.0, "price": 0.448, "chg": -1.1}, "515030": {"signal": "观望", "score": 51.6, "price": 1.614, "chg": -0.31}, "515790": {"signal": "观望", "score": 53.8, "price": 0.832, "chg": 1.96}, "512660": {"signal": "观望", "score": 58.2, "price": 1.101, "chg": 0.73}, "512800": {"signal": "加仓", "score": 82.0, "price": 0.831, "chg": -0.6}, "512400": {"signal": "观望", "score": 55.0, "price": 1.778, "chg": -0.78}, "515220": {"signal": "观望", "score": 52.0, "price": 1.176, "chg": -1.92}, "512200": {"signal": "建仓", "score": 61.0, "price": 1.194, "chg": 0.51}, "515000": {"signal": "减仓", "score": 35.4, "price": 1.168, "chg": -4.18}, "159928": {"signal": "加仓", "score": 79.0, "price": 0.69, "chg": -1.0}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.721, "chg": -2.49}}}, {"file": "snapshots/2026-08-04_1148.json", "time": "2026-08-04 11:48:16", "label": "午盘", "signals": {"512000": {"signal": "减仓", "score": 36.0, "price": 0.527, "chg": 0.0}, "512480": {"signal": "回避", "score": 31.4, "price": 0.97, "chg": 5.32}, "159995": {"signal": "减仓", "score": 36.2, "price": 1.1, "chg": 5.87}, "512010": {"signal": "加仓", "score": 86.0, "price": 0.38, "chg": 1.6}, "512690": {"signal": "加仓", "score": 81.0, "price": 0.44, "chg": -1.79}, "515030": {"signal": "建仓", "score": 62.0, "price": 1.628, "chg": 0.87}, "515790": {"signal": "观望", "score": 57.8, "price": 0.842, "chg": 1.2}, "512660": {"signal": "持有", "score": 63.2, "price": 1.116, "chg": 1.36}, "512800": {"signal": "加仓", "score": 88.0, "price": 0.81, "chg": -2.53}, "512400": {"signal": "建仓", "score": 64.5, "price": 1.81, "chg": 1.8}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.51}, "512200": {"signal": "观望", "score": 55.0, "price": 1.186, "chg": -0.67}, "515000": {"signal": "减仓", "score": 41.0, "price": 1.238, "chg": 5.99}, "159928": {"signal": "加仓", "score": 81.0, "price": 0.679, "chg": -1.59}, "159819": {"signal": "减仓", "score": 43.4, "price": 1.822, "chg": 5.87}}}, {"file": "snapshots/2026-08-04_1320.json", "time": "2026-08-04 13:20:21", "label": "尾盘", "signals": {"512000": {"signal": "减仓", "score": 36.0, "price": 0.527, "chg": 0.0}, "512480": {"signal": "回避", "score": 31.4, "price": 0.97, "chg": 5.32}, "159995": {"signal": "减仓", "score": 36.2, "price": 1.1, "chg": 5.87}, "512010": {"signal": "加仓", "score": 86.0, "price": 0.38, "chg": 1.6}, "512690": {"signal": "加仓", "score": 81.0, "price": 0.44, "chg": -1.79}, "515030": {"signal": "建仓", "score": 62.0, "price": 1.628, "chg": 0.87}, "515790": {"signal": "观望", "score": 57.8, "price": 0.842, "chg": 1.2}, "512660": {"signal": "持有", "score": 63.2, "price": 1.116, "chg": 1.36}, "512800": {"signal": "加仓", "score": 88.0, "price": 0.81, "chg": -2.53}, "512400": {"signal": "建仓", "score": 64.5, "price": 1.81, "chg": 1.8}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.51}, "512200": {"signal": "观望", "score": 55.0, "price": 1.186, "chg": -0.67}, "515000": {"signal": "减仓", "score": 41.0, "price": 1.238, "chg": 5.99}, "159928": {"signal": "加仓", "score": 81.0, "price": 0.679, "chg": -1.59}, "159819": {"signal": "减仓", "score": 43.4, "price": 1.822, "chg": 5.87}}}, {"file": "snapshots/2026-08-04_1327.json", "time": "2026-08-04 13:27:32", "label": "尾盘", "signals": {"512000": {"signal": "减仓", "score": 36.0, "price": 0.527, "chg": 0.0}, "512480": {"signal": "回避", "score": 31.4, "price": 0.97, "chg": 5.32}, "159995": {"signal": "减仓", "score": 36.2, "price": 1.1, "chg": 5.87}, "512010": {"signal": "加仓", "score": 86.0, "price": 0.38, "chg": 1.6}, "512690": {"signal": "加仓", "score": 81.0, "price": 0.44, "chg": -1.79}, "515030": {"signal": "建仓", "score": 62.0, "price": 1.628, "chg": 0.87}, "515790": {"signal": "观望", "score": 57.8, "price": 0.842, "chg": 1.2}, "512660": {"signal": "持有", "score": 63.2, "price": 1.116, "chg": 1.36}, "512800": {"signal": "加仓", "score": 88.0, "price": 0.81, "chg": -2.53}, "512400": {"signal": "建仓", "score": 64.5, "price": 1.81, "chg": 1.8}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.51}, "512200": {"signal": "观望", "score": 55.0, "price": 1.186, "chg": -0.67}, "515000": {"signal": "减仓", "score": 41.0, "price": 1.238, "chg": 5.99}, "159928": {"signal": "加仓", "score": 81.0, "price": 0.679, "chg": -1.59}, "159819": {"signal": "减仓", "score": 43.4, "price": 1.822, "chg": 5.87}}}, {"file": "snapshots/2026-08-05_0803.json", "time": "2026-08-05 08:03:50", "label": "午盘", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.53, "chg": 0.57}, "512480": {"signal": "减仓", "score": 44.2, "price": 1.03, "chg": 6.3}, "159995": {"signal": "减仓", "score": 44.2, "price": 1.17, "chg": 6.85}, "512010": {"signal": "加仓", "score": 90.0, "price": 0.39, "chg": 1.83}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.44, "chg": -0.23}, "515030": {"signal": "建仓", "score": 62.8, "price": 1.663, "chg": 2.15}, "515790": {"signal": "建仓", "score": 62.8, "price": 0.855, "chg": 1.54}, "512660": {"signal": "建仓", "score": 62.8, "price": 1.136, "chg": 1.79}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.8, "chg": -1.36}, "512400": {"signal": "加仓", "score": 77.0, "price": 1.9, "chg": 5.03}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.17}, "512200": {"signal": "加仓", "score": 71.0, "price": 1.21, "chg": 2.02}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 4.2}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.67, "chg": -1.33}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.852, "chg": 1.65}}}, {"file": "snapshots/2026-08-05_1138.json", "time": "2026-08-05 11:38:28", "label": "午盘", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.53, "chg": 0.57}, "512480": {"signal": "减仓", "score": 44.2, "price": 1.03, "chg": 6.3}, "159995": {"signal": "减仓", "score": 44.2, "price": 1.17, "chg": 6.85}, "512010": {"signal": "加仓", "score": 90.0, "price": 0.39, "chg": 1.83}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.44, "chg": -0.23}, "515030": {"signal": "建仓", "score": 62.8, "price": 1.663, "chg": 2.15}, "515790": {"signal": "建仓", "score": 62.8, "price": 0.855, "chg": 1.54}, "512660": {"signal": "建仓", "score": 62.8, "price": 1.136, "chg": 1.79}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.8, "chg": -1.36}, "512400": {"signal": "加仓", "score": 77.0, "price": 1.9, "chg": 5.03}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.17}, "512200": {"signal": "加仓", "score": 71.0, "price": 1.207, "chg": 1.77}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 4.2}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.67, "chg": -1.33}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.852, "chg": 1.65}}}, {"file": "snapshots/2026-08-05_1313.json", "time": "2026-08-05 13:13:33", "label": "尾盘", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.53, "chg": 0.57}, "512480": {"signal": "减仓", "score": 44.2, "price": 1.03, "chg": 6.3}, "159995": {"signal": "减仓", "score": 44.2, "price": 1.17, "chg": 6.85}, "512010": {"signal": "加仓", "score": 90.0, "price": 0.39, "chg": 1.83}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.44, "chg": -0.23}, "515030": {"signal": "建仓", "score": 62.8, "price": 1.663, "chg": 2.15}, "515790": {"signal": "建仓", "score": 62.8, "price": 0.855, "chg": 1.54}, "512660": {"signal": "建仓", "score": 62.8, "price": 1.136, "chg": 1.79}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.8, "chg": -1.36}, "512400": {"signal": "加仓", "score": 77.0, "price": 1.9, "chg": 5.03}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.17}, "512200": {"signal": "加仓", "score": 71.0, "price": 1.207, "chg": 1.77}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 4.2}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.67, "chg": -1.33}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.852, "chg": 1.65}}}, {"file": "snapshots/2026-08-05_1325.json", "time": "2026-08-05 13:25:58", "label": "尾盘", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.53, "chg": 0.57}, "512480": {"signal": "减仓", "score": 44.2, "price": 1.03, "chg": 6.3}, "159995": {"signal": "减仓", "score": 44.2, "price": 1.165, "chg": 6.39}, "512010": {"signal": "加仓", "score": 93.0, "price": 0.387, "chg": 1.04}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.44, "chg": -0.23}, "515030": {"signal": "建仓", "score": 62.8, "price": 1.663, "chg": 2.15}, "515790": {"signal": "建仓", "score": 62.8, "price": 0.855, "chg": 1.54}, "512660": {"signal": "建仓", "score": 62.8, "price": 1.136, "chg": 1.79}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.8, "chg": -1.36}, "512400": {"signal": "加仓", "score": 77.0, "price": 1.9, "chg": 5.03}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.17}, "512200": {"signal": "加仓", "score": 71.0, "price": 1.207, "chg": 1.77}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 4.2}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.67, "chg": -1.33}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.852, "chg": 1.65}}}, {"file": "snapshots/2026-08-05_1746.json", "time": "2026-08-05 17:46:45", "label": "收盘后", "signals": {"512000": {"signal": "观望", "score": 51.0, "price": 0.53, "chg": 0.57}, "512480": {"signal": "减仓", "score": 44.2, "price": 1.03, "chg": 6.3}, "159995": {"signal": "减仓", "score": 44.2, "price": 1.17, "chg": 6.85}, "512010": {"signal": "加仓", "score": 90.0, "price": 0.39, "chg": 1.83}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.44, "chg": -0.23}, "515030": {"signal": "建仓", "score": 62.8, "price": 1.663, "chg": 2.15}, "515790": {"signal": "建仓", "score": 62.8, "price": 0.855, "chg": 1.54}, "512660": {"signal": "建仓", "score": 62.8, "price": 1.136, "chg": 1.79}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.8, "chg": -1.36}, "512400": {"signal": "加仓", "score": 77.0, "price": 1.9, "chg": 5.03}, "515220": {"signal": "减仓", "score": 39.0, "price": 1.17, "chg": -0.17}, "512200": {"signal": "加仓", "score": 71.0, "price": 1.207, "chg": 1.77}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 4.2}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.67, "chg": -1.33}, "159819": {"signal": "减仓", "score": 39.4, "price": 1.852, "chg": 1.65}}}, {"file": "snapshots/2026-08-06_1150.json", "time": "2026-08-06 11:50:37", "label": "午盘", "signals": {"512000": {"signal": "建仓", "score": 46.0, "price": 0.524, "chg": -1.13}, "512480": {"signal": "减仓", "score": 39.4, "price": 1.05, "chg": 1.65}, "159995": {"signal": "减仓", "score": 39.4, "price": 1.177, "chg": 1.03}, "512010": {"signal": "加仓", "score": 91.0, "price": 0.38, "chg": -1.81}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.434, "chg": -0.69}, "515030": {"signal": "观望", "score": 59.6, "price": 1.639, "chg": -1.44}, "515790": {"signal": "观望", "score": 59.6, "price": 0.845, "chg": -1.17}, "512660": {"signal": "观望", "score": 59.6, "price": 1.135, "chg": -0.09}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.81, "chg": 1.12}, "512400": {"signal": "加仓", "score": 89.0, "price": 1.92, "chg": 0.89}, "515220": {"signal": "加仓", "score": 96.0, "price": 1.24, "chg": 5.62}, "512200": {"signal": "加仓", "score": 73.0, "price": 1.207, "chg": 0.0}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 0.0}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.669, "chg": -0.74}, "159819": {"signal": "减仓", "score": 36.2, "price": 1.845, "chg": -0.38}}}, {"file": "snapshots/2026-08-06_1310.json", "time": "2026-08-06 13:10:43", "label": "尾盘", "signals": {"512000": {"signal": "建仓", "score": 46.0, "price": 0.524, "chg": -1.13}, "512480": {"signal": "减仓", "score": 39.4, "price": 1.05, "chg": 1.65}, "159995": {"signal": "减仓", "score": 39.4, "price": 1.177, "chg": 1.03}, "512010": {"signal": "加仓", "score": 91.0, "price": 0.38, "chg": -1.81}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.434, "chg": -0.69}, "515030": {"signal": "观望", "score": 59.6, "price": 1.639, "chg": -1.44}, "515790": {"signal": "观望", "score": 59.6, "price": 0.845, "chg": -1.17}, "512660": {"signal": "观望", "score": 59.6, "price": 1.135, "chg": -0.09}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.81, "chg": 1.12}, "512400": {"signal": "加仓", "score": 89.0, "price": 1.92, "chg": 0.89}, "515220": {"signal": "加仓", "score": 96.0, "price": 1.24, "chg": 5.62}, "512200": {"signal": "加仓", "score": 73.0, "price": 1.207, "chg": 0.0}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 0.0}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.669, "chg": -0.74}, "159819": {"signal": "减仓", "score": 36.2, "price": 1.845, "chg": -0.38}}}, {"file": "snapshots/2026-08-06_1322.json", "time": "2026-08-06 13:22:05", "label": "尾盘", "signals": {"512000": {"signal": "建仓", "score": 46.0, "price": 0.524, "chg": -1.13}, "512480": {"signal": "减仓", "score": 39.4, "price": 1.05, "chg": 1.65}, "159995": {"signal": "减仓", "score": 39.4, "price": 1.177, "chg": 1.03}, "512010": {"signal": "加仓", "score": 91.0, "price": 0.38, "chg": -1.81}, "512690": {"signal": "加仓", "score": 85.0, "price": 0.434, "chg": -0.69}, "515030": {"signal": "观望", "score": 59.6, "price": 1.639, "chg": -1.44}, "515790": {"signal": "观望", "score": 59.6, "price": 0.845, "chg": -1.17}, "512660": {"signal": "观望", "score": 59.6, "price": 1.135, "chg": -0.09}, "512800": {"signal": "加仓", "score": 76.0, "price": 0.81, "chg": 1.12}, "512400": {"signal": "加仓", "score": 89.0, "price": 1.92, "chg": 0.89}, "515220": {"signal": "加仓", "score": 96.0, "price": 1.24, "chg": 5.62}, "512200": {"signal": "加仓", "score": 73.0, "price": 1.207, "chg": 0.0}, "515000": {"signal": "减仓", "score": 39.4, "price": 1.29, "chg": 0.0}, "159928": {"signal": "加仓", "score": 85.0, "price": 0.669, "chg": -0.74}, "159819": {"signal": "减仓", "score": 36.2, "price": 1.845, "chg": -0.38}}}]}
+{
+  "runs": [
+    {
+      "file": "snapshots/2026-07-30_1552.json",
+      "time": "2026-07-30 15:52:35",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.529,
+          "chg": 0.0
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 21.0,
+          "price": 0.958,
+          "chg": -6.72
+        },
+        "159995": {
+          "signal": "回避",
+          "score": 25.0,
+          "price": 1.08,
+          "chg": -6.25
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.38,
+          "chg": 1.88
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 89.0,
+          "price": 0.452,
+          "chg": 3.67
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 51.6,
+          "price": 1.603,
+          "chg": -0.12
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 50.8,
+          "price": 0.804,
+          "chg": -1.47
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 45.2,
+          "price": 1.073,
+          "chg": -1.92
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 2.56
+        },
+        "512400": {
+          "signal": "减仓",
+          "score": 40.0,
+          "price": 1.75,
+          "chg": -1.02
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 66.0,
+          "price": 1.2,
+          "chg": 0.0
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 56.0,
+          "price": 1.174,
+          "chg": -0.34
+        },
+        "515000": {
+          "signal": "观望",
+          "score": 24.0,
+          "price": 1.171,
+          "chg": -5.11
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 96.0,
+          "price": 0.699,
+          "chg": 2.95
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 32.0,
+          "price": 1.67,
+          "chg": -6.29
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-30_2053.json",
+      "time": "2026-07-30 20:53:50",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 0.529,
+          "chg": 0.0
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 15.0,
+          "price": 0.958,
+          "chg": -6.72
+        },
+        "159995": {
+          "signal": "回避",
+          "score": 15.0,
+          "price": 1.08,
+          "chg": -6.25
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 67.0,
+          "price": 0.376,
+          "chg": 0.8
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.452,
+          "chg": 3.67
+        },
+        "515790": {
+          "signal": "减仓",
+          "score": 37.0,
+          "price": 0.804,
+          "chg": -1.47
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 74.0,
+          "price": 0.84,
+          "chg": 2.56
+        },
+        "512400": {
+          "signal": "减仓",
+          "score": 37.0,
+          "price": 1.747,
+          "chg": -1.19
+        },
+        "159819": {
+          "signal": "回避",
+          "score": 18.0,
+          "price": 1.67,
+          "chg": -6.29
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-30_2102.json",
+      "time": "2026-07-30 21:02:52",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 45.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 12.0,
+          "price": 0.96,
+          "chg": -6.52
+        },
+        "159995": {
+          "signal": "回避",
+          "score": 15.0,
+          "price": 1.08,
+          "chg": -6.25
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 70.0,
+          "price": 0.38,
+          "chg": 1.88
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.452,
+          "chg": 3.67
+        },
+        "515030": {
+          "signal": "减仓",
+          "score": 37.0,
+          "price": 1.603,
+          "chg": -0.12
+        },
+        "515790": {
+          "signal": "减仓",
+          "score": 40.0,
+          "price": 0.804,
+          "chg": -1.47
+        },
+        "512660": {
+          "signal": "回避",
+          "score": 28.0,
+          "price": 1.073,
+          "chg": -1.92
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 77.0,
+          "price": 0.84,
+          "chg": 2.56
+        },
+        "512400": {
+          "signal": "减仓",
+          "score": 40.0,
+          "price": 1.75,
+          "chg": -1.02
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.2,
+          "chg": 0.0
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 53.0,
+          "price": 1.174,
+          "chg": -0.34
+        },
+        "515000": {
+          "signal": "回避",
+          "score": 13.0,
+          "price": 1.171,
+          "chg": -5.11
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 94.0,
+          "price": 0.699,
+          "chg": 2.95
+        },
+        "159819": {
+          "signal": "回避",
+          "score": 21.0,
+          "price": 1.67,
+          "chg": -6.29
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-30_2248.json",
+      "time": "2026-07-30 22:48:43",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 21.0,
+          "price": 0.96,
+          "chg": -6.52
+        },
+        "159995": {
+          "signal": "回避",
+          "score": 25.0,
+          "price": 1.08,
+          "chg": -6.25
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.38,
+          "chg": 1.88
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 89.0,
+          "price": 0.452,
+          "chg": 3.67
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 51.6,
+          "price": 1.603,
+          "chg": -0.12
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 50.8,
+          "price": 0.804,
+          "chg": -1.47
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 45.2,
+          "price": 1.073,
+          "chg": -1.92
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 2.56
+        },
+        "512400": {
+          "signal": "减仓",
+          "score": 40.0,
+          "price": 1.75,
+          "chg": -1.02
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 66.0,
+          "price": 1.2,
+          "chg": 0.0
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 56.0,
+          "price": 1.174,
+          "chg": -0.34
+        },
+        "515000": {
+          "signal": "观望",
+          "score": 24.0,
+          "price": 1.171,
+          "chg": -5.11
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 96.0,
+          "price": 0.699,
+          "chg": 2.95
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 32.0,
+          "price": 1.67,
+          "chg": -6.29
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-30_2315.json",
+      "time": "2026-07-30 23:15:31",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 21.0,
+          "price": 0.96,
+          "chg": -6.52
+        },
+        "159995": {
+          "signal": "回避",
+          "score": 25.0,
+          "price": 1.08,
+          "chg": -6.25
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.38,
+          "chg": 1.88
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 89.0,
+          "price": 0.452,
+          "chg": 3.67
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 51.6,
+          "price": 1.603,
+          "chg": -0.12
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 50.8,
+          "price": 0.804,
+          "chg": -1.47
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 45.2,
+          "price": 1.073,
+          "chg": -1.92
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 2.56
+        },
+        "512400": {
+          "signal": "减仓",
+          "score": 40.0,
+          "price": 1.75,
+          "chg": -1.02
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 66.0,
+          "price": 1.2,
+          "chg": 0.0
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 56.0,
+          "price": 1.174,
+          "chg": -0.34
+        },
+        "515000": {
+          "signal": "观望",
+          "score": 24.0,
+          "price": 1.171,
+          "chg": -5.11
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 96.0,
+          "price": 0.699,
+          "chg": 2.95
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 32.0,
+          "price": 1.67,
+          "chg": -6.29
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_0759.json",
+      "time": "2026-07-31 07:59:52",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 56.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 0.99,
+          "chg": 3.34
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 1.12,
+          "chg": 3.7
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 69.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.816,
+          "chg": 1.49
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 0.0
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.79,
+          "chg": 2.46
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 61.0,
+          "price": 1.2,
+          "chg": -0.08
+        },
+        "512200": {
+          "signal": "建仓",
+          "score": 60.5,
+          "price": 1.19,
+          "chg": 1.36
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.22,
+          "chg": 4.18
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 84.0,
+          "price": 0.7,
+          "chg": 0.14
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.765,
+          "chg": 5.69
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_0813.json",
+      "time": "2026-07-31 08:13:33",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 56.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 0.99,
+          "chg": 3.34
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 1.12,
+          "chg": 3.7
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 69.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.816,
+          "chg": 1.49
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 0.0
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.79,
+          "chg": 2.46
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 61.0,
+          "price": 1.2,
+          "chg": -0.08
+        },
+        "512200": {
+          "signal": "建仓",
+          "score": 60.5,
+          "price": 1.19,
+          "chg": 1.36
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.22,
+          "chg": 4.18
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 84.0,
+          "price": 0.7,
+          "chg": 0.14
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.765,
+          "chg": 5.69
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_0833.json",
+      "time": "2026-07-31 08:33:59",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 56.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 0.99,
+          "chg": 3.34
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 1.12,
+          "chg": 3.7
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 69.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.816,
+          "chg": 1.49
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 0.0
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.79,
+          "chg": 2.46
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 61.0,
+          "price": 1.2,
+          "chg": -0.08
+        },
+        "512200": {
+          "signal": "建仓",
+          "score": 60.5,
+          "price": 1.19,
+          "chg": 1.36
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.22,
+          "chg": 4.18
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 84.0,
+          "price": 0.7,
+          "chg": 0.14
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.765,
+          "chg": 5.69
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_0859.json",
+      "time": "2026-07-31 08:59:42",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 56.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 0.99,
+          "chg": 3.34
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 1.118,
+          "chg": 3.52
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 69.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.816,
+          "chg": 1.49
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 0.0
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.79,
+          "chg": 2.46
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 61.0,
+          "price": 1.2,
+          "chg": -0.08
+        },
+        "512200": {
+          "signal": "建仓",
+          "score": 60.5,
+          "price": 1.19,
+          "chg": 1.36
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.22,
+          "chg": 4.18
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 84.0,
+          "price": 0.7,
+          "chg": 0.14
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.765,
+          "chg": 5.69
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_1139.json",
+      "time": "2026-07-31 11:39:43",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 56.0,
+          "price": 0.529,
+          "chg": 0.0
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 0.99,
+          "chg": 3.34
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 1.118,
+          "chg": 3.52
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 69.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.816,
+          "chg": 1.49
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 0.0
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.792,
+          "chg": 2.58
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 61.0,
+          "price": 1.199,
+          "chg": -0.17
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 57.5,
+          "price": 1.188,
+          "chg": 1.19
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.219,
+          "chg": 4.1
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 84.0,
+          "price": 0.7,
+          "chg": 0.14
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.765,
+          "chg": 5.69
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_1219.json",
+      "time": "2026-07-31 12:19:40",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 55.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.02,
+          "chg": 6.47
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.15,
+          "chg": 6.48
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 68.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.822,
+          "chg": 2.24
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.82,
+          "chg": -2.38
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.79,
+          "chg": 2.46
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 60.0,
+          "price": 1.19,
+          "chg": -0.92
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 59.5,
+          "price": 1.19,
+          "chg": 1.36
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.24,
+          "chg": 5.89
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.69,
+          "chg": -1.29
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.794,
+          "chg": 7.43
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_1247.json",
+      "time": "2026-07-31 12:47:23",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 55.0,
+          "price": 0.53,
+          "chg": 0.19
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.02,
+          "chg": 6.47
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.15,
+          "chg": 6.48
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 68.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.822,
+          "chg": 2.24
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.82,
+          "chg": -2.38
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.79,
+          "chg": 2.46
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 60.0,
+          "price": 1.19,
+          "chg": -0.92
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 59.5,
+          "price": 1.19,
+          "chg": 1.36
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.24,
+          "chg": 5.89
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.69,
+          "chg": -1.29
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.794,
+          "chg": 7.43
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-07-31_1316.json",
+      "time": "2026-07-31 13:16:50",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 56.0,
+          "price": 0.529,
+          "chg": 0.0
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 0.99,
+          "chg": 3.34
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 1.118,
+          "chg": 3.52
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 69.0,
+          "price": 0.38,
+          "chg": 1.06
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.44
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 54.0,
+          "price": 1.619,
+          "chg": 1.0
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.816,
+          "chg": 1.49
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 64.0,
+          "price": 1.093,
+          "chg": 1.86
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.84,
+          "chg": 0.0
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 63.5,
+          "price": 1.792,
+          "chg": 2.58
+        },
+        "515220": {
+          "signal": "持有",
+          "score": 61.0,
+          "price": 1.199,
+          "chg": -0.17
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 57.5,
+          "price": 1.188,
+          "chg": 1.19
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.219,
+          "chg": 4.1
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 84.0,
+          "price": 0.7,
+          "chg": 0.14
+        },
+        "159819": {
+          "signal": "观望",
+          "score": 48.2,
+          "price": 1.765,
+          "chg": 5.69
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-03_1347.json",
+      "time": "2026-08-03 13:47:43",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 47.0,
+          "price": 0.527,
+          "chg": -0.38
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 37.0,
+          "price": 0.92,
+          "chg": -7.26
+        },
+        "159995": {
+          "signal": "观望",
+          "score": 33.0,
+          "price": 1.04,
+          "chg": -6.98
+        },
+        "512010": {
+          "signal": "观望",
+          "score": 56.0,
+          "price": 0.37,
+          "chg": -1.86
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.45,
+          "chg": -0.66
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 51.6,
+          "price": 1.614,
+          "chg": -0.31
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 53.8,
+          "price": 0.832,
+          "chg": 1.96
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 58.2,
+          "price": 1.101,
+          "chg": 0.73
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.83,
+          "chg": -0.72
+        },
+        "512400": {
+          "signal": "观望",
+          "score": 55.0,
+          "price": 1.778,
+          "chg": -0.78
+        },
+        "515220": {
+          "signal": "观望",
+          "score": 52.0,
+          "price": 1.176,
+          "chg": -1.92
+        },
+        "512200": {
+          "signal": "建仓",
+          "score": 61.0,
+          "price": 1.194,
+          "chg": 0.51
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 35.4,
+          "price": 1.168,
+          "chg": -4.18
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 79.0,
+          "price": 0.69,
+          "chg": -1.0
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.721,
+          "chg": -2.49
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-03_1607.json",
+      "time": "2026-08-03 16:07:46",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 47.0,
+          "price": 0.527,
+          "chg": -0.38
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 37.0,
+          "price": 0.921,
+          "chg": -7.16
+        },
+        "159995": {
+          "signal": "观望",
+          "score": 33.0,
+          "price": 1.039,
+          "chg": -7.07
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 66.0,
+          "price": 0.374,
+          "chg": -0.8
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.448,
+          "chg": -1.1
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 51.6,
+          "price": 1.614,
+          "chg": -0.31
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 53.8,
+          "price": 0.832,
+          "chg": 1.96
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 58.2,
+          "price": 1.101,
+          "chg": 0.73
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.831,
+          "chg": -0.6
+        },
+        "512400": {
+          "signal": "观望",
+          "score": 55.0,
+          "price": 1.778,
+          "chg": -0.78
+        },
+        "515220": {
+          "signal": "观望",
+          "score": 52.0,
+          "price": 1.176,
+          "chg": -1.92
+        },
+        "512200": {
+          "signal": "建仓",
+          "score": 61.0,
+          "price": 1.194,
+          "chg": 0.51
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 35.4,
+          "price": 1.168,
+          "chg": -4.18
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 79.0,
+          "price": 0.69,
+          "chg": -1.0
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.721,
+          "chg": -2.49
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-03_1642.json",
+      "time": "2026-08-03 16:42:26",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "加仓",
+          "score": 47.0,
+          "price": 0.527,
+          "chg": -0.38
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 37.0,
+          "price": 0.921,
+          "chg": -7.16
+        },
+        "159995": {
+          "signal": "观望",
+          "score": 33.0,
+          "price": 1.039,
+          "chg": -7.07
+        },
+        "512010": {
+          "signal": "建仓",
+          "score": 66.0,
+          "price": 0.374,
+          "chg": -0.8
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.448,
+          "chg": -1.1
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 51.6,
+          "price": 1.614,
+          "chg": -0.31
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 53.8,
+          "price": 0.832,
+          "chg": 1.96
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 58.2,
+          "price": 1.101,
+          "chg": 0.73
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 82.0,
+          "price": 0.831,
+          "chg": -0.6
+        },
+        "512400": {
+          "signal": "观望",
+          "score": 55.0,
+          "price": 1.778,
+          "chg": -0.78
+        },
+        "515220": {
+          "signal": "观望",
+          "score": 52.0,
+          "price": 1.176,
+          "chg": -1.92
+        },
+        "512200": {
+          "signal": "建仓",
+          "score": 61.0,
+          "price": 1.194,
+          "chg": 0.51
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 35.4,
+          "price": 1.168,
+          "chg": -4.18
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 79.0,
+          "price": 0.69,
+          "chg": -1.0
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.721,
+          "chg": -2.49
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-04_1148.json",
+      "time": "2026-08-04 11:48:16",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "减仓",
+          "score": 36.0,
+          "price": 0.527,
+          "chg": 0.0
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 31.4,
+          "price": 0.97,
+          "chg": 5.32
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 36.2,
+          "price": 1.1,
+          "chg": 5.87
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 86.0,
+          "price": 0.38,
+          "chg": 1.6
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.44,
+          "chg": -1.79
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.0,
+          "price": 1.628,
+          "chg": 0.87
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 57.8,
+          "price": 0.842,
+          "chg": 1.2
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 63.2,
+          "price": 1.116,
+          "chg": 1.36
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 88.0,
+          "price": 0.81,
+          "chg": -2.53
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 64.5,
+          "price": 1.81,
+          "chg": 1.8
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.51
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 55.0,
+          "price": 1.186,
+          "chg": -0.67
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 41.0,
+          "price": 1.238,
+          "chg": 5.99
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.679,
+          "chg": -1.59
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 43.4,
+          "price": 1.822,
+          "chg": 5.87
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-04_1320.json",
+      "time": "2026-08-04 13:20:21",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "减仓",
+          "score": 36.0,
+          "price": 0.527,
+          "chg": 0.0
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 31.4,
+          "price": 0.97,
+          "chg": 5.32
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 36.2,
+          "price": 1.1,
+          "chg": 5.87
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 86.0,
+          "price": 0.38,
+          "chg": 1.6
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.44,
+          "chg": -1.79
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.0,
+          "price": 1.628,
+          "chg": 0.87
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 57.8,
+          "price": 0.842,
+          "chg": 1.2
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 63.2,
+          "price": 1.116,
+          "chg": 1.36
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 88.0,
+          "price": 0.81,
+          "chg": -2.53
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 64.5,
+          "price": 1.81,
+          "chg": 1.8
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.51
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 55.0,
+          "price": 1.186,
+          "chg": -0.67
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 41.0,
+          "price": 1.238,
+          "chg": 5.99
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.679,
+          "chg": -1.59
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 43.4,
+          "price": 1.822,
+          "chg": 5.87
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-04_1327.json",
+      "time": "2026-08-04 13:27:32",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "减仓",
+          "score": 36.0,
+          "price": 0.527,
+          "chg": 0.0
+        },
+        "512480": {
+          "signal": "回避",
+          "score": 31.4,
+          "price": 0.97,
+          "chg": 5.32
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 36.2,
+          "price": 1.1,
+          "chg": 5.87
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 86.0,
+          "price": 0.38,
+          "chg": 1.6
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.44,
+          "chg": -1.79
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.0,
+          "price": 1.628,
+          "chg": 0.87
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 57.8,
+          "price": 0.842,
+          "chg": 1.2
+        },
+        "512660": {
+          "signal": "持有",
+          "score": 63.2,
+          "price": 1.116,
+          "chg": 1.36
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 88.0,
+          "price": 0.81,
+          "chg": -2.53
+        },
+        "512400": {
+          "signal": "建仓",
+          "score": 64.5,
+          "price": 1.81,
+          "chg": 1.8
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.51
+        },
+        "512200": {
+          "signal": "观望",
+          "score": 55.0,
+          "price": 1.186,
+          "chg": -0.67
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 41.0,
+          "price": 1.238,
+          "chg": 5.99
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 81.0,
+          "price": 0.679,
+          "chg": -1.59
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 43.4,
+          "price": 1.822,
+          "chg": 5.87
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-05_0803.json",
+      "time": "2026-08-05 08:03:50",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.53,
+          "chg": 0.57
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.03,
+          "chg": 6.3
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.17,
+          "chg": 6.85
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 90.0,
+          "price": 0.39,
+          "chg": 1.83
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.44,
+          "chg": -0.23
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.663,
+          "chg": 2.15
+        },
+        "515790": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 0.855,
+          "chg": 1.54
+        },
+        "512660": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.136,
+          "chg": 1.79
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.8,
+          "chg": -1.36
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 77.0,
+          "price": 1.9,
+          "chg": 5.03
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.17
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 71.0,
+          "price": 1.21,
+          "chg": 2.02
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 4.2
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.67,
+          "chg": -1.33
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.852,
+          "chg": 1.65
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-05_1138.json",
+      "time": "2026-08-05 11:38:28",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.53,
+          "chg": 0.57
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.03,
+          "chg": 6.3
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.17,
+          "chg": 6.85
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 90.0,
+          "price": 0.39,
+          "chg": 1.83
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.44,
+          "chg": -0.23
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.663,
+          "chg": 2.15
+        },
+        "515790": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 0.855,
+          "chg": 1.54
+        },
+        "512660": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.136,
+          "chg": 1.79
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.8,
+          "chg": -1.36
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 77.0,
+          "price": 1.9,
+          "chg": 5.03
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.17
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 71.0,
+          "price": 1.207,
+          "chg": 1.77
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 4.2
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.67,
+          "chg": -1.33
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.852,
+          "chg": 1.65
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-05_1313.json",
+      "time": "2026-08-05 13:13:33",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.53,
+          "chg": 0.57
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.03,
+          "chg": 6.3
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.17,
+          "chg": 6.85
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 90.0,
+          "price": 0.39,
+          "chg": 1.83
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.44,
+          "chg": -0.23
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.663,
+          "chg": 2.15
+        },
+        "515790": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 0.855,
+          "chg": 1.54
+        },
+        "512660": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.136,
+          "chg": 1.79
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.8,
+          "chg": -1.36
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 77.0,
+          "price": 1.9,
+          "chg": 5.03
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.17
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 71.0,
+          "price": 1.207,
+          "chg": 1.77
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 4.2
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.67,
+          "chg": -1.33
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.852,
+          "chg": 1.65
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-05_1325.json",
+      "time": "2026-08-05 13:25:58",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.53,
+          "chg": 0.57
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.03,
+          "chg": 6.3
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.165,
+          "chg": 6.39
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 93.0,
+          "price": 0.387,
+          "chg": 1.04
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.44,
+          "chg": -0.23
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.663,
+          "chg": 2.15
+        },
+        "515790": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 0.855,
+          "chg": 1.54
+        },
+        "512660": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.136,
+          "chg": 1.79
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.8,
+          "chg": -1.36
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 77.0,
+          "price": 1.9,
+          "chg": 5.03
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.17
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 71.0,
+          "price": 1.207,
+          "chg": 1.77
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 4.2
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.67,
+          "chg": -1.33
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.852,
+          "chg": 1.65
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-05_1746.json",
+      "time": "2026-08-05 17:46:45",
+      "label": "收盘后",
+      "signals": {
+        "512000": {
+          "signal": "观望",
+          "score": 51.0,
+          "price": 0.53,
+          "chg": 0.57
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.03,
+          "chg": 6.3
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 44.2,
+          "price": 1.17,
+          "chg": 6.85
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 90.0,
+          "price": 0.39,
+          "chg": 1.83
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.44,
+          "chg": -0.23
+        },
+        "515030": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.663,
+          "chg": 2.15
+        },
+        "515790": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 0.855,
+          "chg": 1.54
+        },
+        "512660": {
+          "signal": "建仓",
+          "score": 62.8,
+          "price": 1.136,
+          "chg": 1.79
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.8,
+          "chg": -1.36
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 77.0,
+          "price": 1.9,
+          "chg": 5.03
+        },
+        "515220": {
+          "signal": "减仓",
+          "score": 39.0,
+          "price": 1.17,
+          "chg": -0.17
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 71.0,
+          "price": 1.207,
+          "chg": 1.77
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 4.2
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.67,
+          "chg": -1.33
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.852,
+          "chg": 1.65
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-06_1150.json",
+      "time": "2026-08-06 11:50:37",
+      "label": "午盘",
+      "signals": {
+        "512000": {
+          "signal": "建仓",
+          "score": 46.0,
+          "price": 0.524,
+          "chg": -1.13
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.05,
+          "chg": 1.65
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.177,
+          "chg": 1.03
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 91.0,
+          "price": 0.38,
+          "chg": -1.81
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.434,
+          "chg": -0.69
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.639,
+          "chg": -1.44
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.845,
+          "chg": -1.17
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.135,
+          "chg": -0.09
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.81,
+          "chg": 1.12
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 89.0,
+          "price": 1.92,
+          "chg": 0.89
+        },
+        "515220": {
+          "signal": "加仓",
+          "score": 96.0,
+          "price": 1.24,
+          "chg": 5.62
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 73.0,
+          "price": 1.207,
+          "chg": 0.0
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 0.0
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.669,
+          "chg": -0.74
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 36.2,
+          "price": 1.845,
+          "chg": -0.38
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-06_1310.json",
+      "time": "2026-08-06 13:10:43",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "建仓",
+          "score": 46.0,
+          "price": 0.524,
+          "chg": -1.13
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.05,
+          "chg": 1.65
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.177,
+          "chg": 1.03
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 91.0,
+          "price": 0.38,
+          "chg": -1.81
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.434,
+          "chg": -0.69
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.639,
+          "chg": -1.44
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.845,
+          "chg": -1.17
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.135,
+          "chg": -0.09
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.81,
+          "chg": 1.12
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 89.0,
+          "price": 1.92,
+          "chg": 0.89
+        },
+        "515220": {
+          "signal": "加仓",
+          "score": 96.0,
+          "price": 1.24,
+          "chg": 5.62
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 73.0,
+          "price": 1.207,
+          "chg": 0.0
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 0.0
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.669,
+          "chg": -0.74
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 36.2,
+          "price": 1.845,
+          "chg": -0.38
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-06_1322.json",
+      "time": "2026-08-06 13:22:05",
+      "label": "尾盘",
+      "signals": {
+        "512000": {
+          "signal": "建仓",
+          "score": 46.0,
+          "price": 0.524,
+          "chg": -1.13
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.05,
+          "chg": 1.65
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.177,
+          "chg": 1.03
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 91.0,
+          "price": 0.38,
+          "chg": -1.81
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.434,
+          "chg": -0.69
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.639,
+          "chg": -1.44
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.845,
+          "chg": -1.17
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.135,
+          "chg": -0.09
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 76.0,
+          "price": 0.81,
+          "chg": 1.12
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 89.0,
+          "price": 1.92,
+          "chg": 0.89
+        },
+        "515220": {
+          "signal": "加仓",
+          "score": 96.0,
+          "price": 1.24,
+          "chg": 5.62
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 73.0,
+          "price": 1.207,
+          "chg": 0.0
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.29,
+          "chg": 0.0
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.669,
+          "chg": -0.74
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 36.2,
+          "price": 1.845,
+          "chg": -0.38
+        }
+      }
+    },
+    {
+      "file": "snapshots/2026-08-07_0839.json",
+      "time": "2026-08-07 08:39:50",
+      "label": "午盘",
+      "signals": {
+        "510300": {
+          "signal": "减仓",
+          "score": 36.0,
+          "price": 4.709,
+          "chg": -0.11
+        },
+        "510050": {
+          "signal": "减仓",
+          "score": 41.0,
+          "price": 3.029,
+          "chg": 0.0
+        },
+        "510500": {
+          "signal": "建仓",
+          "score": 64.0,
+          "price": 7.832,
+          "chg": 0.22
+        },
+        "159915": {
+          "signal": "观望",
+          "score": 45.0,
+          "price": 3.54,
+          "chg": -0.56
+        },
+        "588000": {
+          "signal": "回避",
+          "score": 23.0,
+          "price": 1.794,
+          "chg": 0.45
+        },
+        "512100": {
+          "signal": "建仓",
+          "score": 64.0,
+          "price": 3.049,
+          "chg": 0.46
+        },
+        "512000": {
+          "signal": "建仓",
+          "score": 46.0,
+          "price": 0.524,
+          "chg": -1.13
+        },
+        "512800": {
+          "signal": "加仓",
+          "score": 66.0,
+          "price": 0.805,
+          "chg": 0.5
+        },
+        "512070": {
+          "signal": "减仓",
+          "score": 35.0,
+          "price": 0.798,
+          "chg": -1.12
+        },
+        "512200": {
+          "signal": "加仓",
+          "score": 73.0,
+          "price": 1.207,
+          "chg": 0.0
+        },
+        "159851": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.653,
+          "chg": -0.15
+        },
+        "159928": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.669,
+          "chg": -0.74
+        },
+        "512690": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.434,
+          "chg": -0.69
+        },
+        "515170": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.473,
+          "chg": -0.42
+        },
+        "159996": {
+          "signal": "观望",
+          "score": 55.0,
+          "price": 1.419,
+          "chg": -0.35
+        },
+        "159865": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.532,
+          "chg": -0.19
+        },
+        "159825": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 0.724,
+          "chg": 0.14
+        },
+        "159766": {
+          "signal": "持有",
+          "score": 67.0,
+          "price": 0.571,
+          "chg": -0.52
+        },
+        "512010": {
+          "signal": "加仓",
+          "score": 91.0,
+          "price": 0.379,
+          "chg": -2.07
+        },
+        "512170": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 0.331,
+          "chg": -1.78
+        },
+        "159992": {
+          "signal": "建仓",
+          "score": 67.8,
+          "price": 0.854,
+          "chg": -1.39
+        },
+        "159837": {
+          "signal": "观望",
+          "score": 58.2,
+          "price": 0.487,
+          "chg": -2.01
+        },
+        "560080": {
+          "signal": "观望",
+          "score": 47.0,
+          "price": 0.987,
+          "chg": -0.7
+        },
+        "512480": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.047,
+          "chg": 1.36
+        },
+        "159995": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.177,
+          "chg": 1.03
+        },
+        "515000": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 1.292,
+          "chg": 0.16
+        },
+        "159819": {
+          "signal": "减仓",
+          "score": 36.2,
+          "price": 1.845,
+          "chg": -0.38
+        },
+        "515050": {
+          "signal": "观望",
+          "score": 58.2,
+          "price": 1.014,
+          "chg": 1.2
+        },
+        "516510": {
+          "signal": "加仓",
+          "score": 77.4,
+          "price": 1.76,
+          "chg": -0.96
+        },
+        "515230": {
+          "signal": "加仓",
+          "score": 75.0,
+          "price": 0.747,
+          "chg": -0.93
+        },
+        "159998": {
+          "signal": "加仓",
+          "score": 77.4,
+          "price": 1.018,
+          "chg": -0.29
+        },
+        "515880": {
+          "signal": "持有",
+          "score": 63.2,
+          "price": 0.652,
+          "chg": 1.56
+        },
+        "159997": {
+          "signal": "减仓",
+          "score": 39.4,
+          "price": 2.129,
+          "chg": 1.57
+        },
+        "562500": {
+          "signal": "建仓",
+          "score": 68.0,
+          "price": 1.009,
+          "chg": -0.79
+        },
+        "159667": {
+          "signal": "加仓",
+          "score": 76.2,
+          "price": 0.676,
+          "chg": 1.81
+        },
+        "515030": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.639,
+          "chg": -1.44
+        },
+        "515790": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.845,
+          "chg": -1.17
+        },
+        "159755": {
+          "signal": "观望",
+          "score": 54.6,
+          "price": 0.96,
+          "chg": -1.13
+        },
+        "159840": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.775,
+          "chg": -0.9
+        },
+        "512660": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 1.135,
+          "chg": -0.09
+        },
+        "512670": {
+          "signal": "观望",
+          "score": 59.6,
+          "price": 0.759,
+          "chg": -0.39
+        },
+        "512400": {
+          "signal": "加仓",
+          "score": 89.0,
+          "price": 1.917,
+          "chg": 0.74
+        },
+        "515220": {
+          "signal": "加仓",
+          "score": 96.0,
+          "price": 1.243,
+          "chg": 5.88
+        },
+        "515210": {
+          "signal": "持有",
+          "score": 67.0,
+          "price": 1.173,
+          "chg": -0.76
+        },
+        "516020": {
+          "signal": "观望",
+          "score": 58.0,
+          "price": 0.873,
+          "chg": 1.51
+        },
+        "561360": {
+          "signal": "加仓",
+          "score": 87.0,
+          "price": 1.432,
+          "chg": 0.49
+        },
+        "159697": {
+          "signal": "加仓",
+          "score": 91.0,
+          "price": 1.291,
+          "chg": 0.7
+        },
+        "516780": {
+          "signal": "建仓",
+          "score": 66.0,
+          "price": 0.856,
+          "chg": 0.47
+        },
+        "518880": {
+          "signal": "建仓",
+          "score": 63.0,
+          "price": 8.795,
+          "chg": 1.79
+        },
+        "159886": {
+          "signal": "观望",
+          "score": 56.0,
+          "price": 0.933,
+          "chg": -1.89
+        },
+        "516950": {
+          "signal": "加仓",
+          "score": 71.0,
+          "price": 1.055,
+          "chg": -0.57
+        },
+        "159745": {
+          "signal": "持有",
+          "score": 66.0,
+          "price": 0.539,
+          "chg": 0.56
+        },
+        "159611": {
+          "signal": "持有",
+          "score": 65.0,
+          "price": 1.059,
+          "chg": -0.84
+        },
+        "159669": {
+          "signal": "持有",
+          "score": 65.0,
+          "price": 1.125,
+          "chg": -0.88
+        },
+        "516110": {
+          "signal": "持有",
+          "score": 61.0,
+          "price": 1.135,
+          "chg": -1.22
+        },
+        "512980": {
+          "signal": "加仓",
+          "score": 75.0,
+          "price": 0.865,
+          "chg": -1.82
+        },
+        "159869": {
+          "signal": "加仓",
+          "score": 75.0,
+          "price": 1.135,
+          "chg": -1.82
+        },
+        "513360": {
+          "signal": "加仓",
+          "score": 74.0,
+          "price": 0.476,
+          "chg": -1.04
+        },
+        "516910": {
+          "signal": "加仓",
+          "score": 85.0,
+          "price": 1.163,
+          "chg": -0.43
+        },
+        "515400": {
+          "signal": "加仓",
+          "score": 77.4,
+          "price": 0.908,
+          "chg": -0.77
+        },
+        "516330": {
+          "signal": "减仓",
+          "score": 44.4,
+          "price": 1.603,
+          "chg": 0.5
+        },
+        "513100": {
+          "signal": "加仓",
+          "score": 83.4,
+          "price": 2.244,
+          "chg": -1.01
+        },
+        "513500": {
+          "signal": "加仓",
+          "score": 95.0,
+          "price": 2.69,
+          "chg": 0.79
+        },
+        "513050": {
+          "signal": "加仓",
+          "score": 74.0,
+          "price": 1.161,
+          "chg": -2.35
+        },
+        "513180": {
+          "signal": "加仓",
+          "score": 75.0,
+          "price": 0.61,
+          "chg": -2.24
+        },
+        "159985": {
+          "signal": "建仓",
+          "score": 44.5,
+          "price": 2.119,
+          "chg": 1.05
+        }
+      }
+    }
+  ]
+}
