@@ -3,11 +3,12 @@ name: ETF 看板每日自动更新
 on:
   schedule:
     # 北京时间：午盘收盘后 11:35 / 15:00 收盘后 15:05  ->  UTC 03:35 / 07:05（周一至周五）
-    # 说明：GitHub 定时任务在网络高峰可能延迟数小时，真正的“准点”由 WorkBuddy 自动化
-    #       在 11:35 / 15:05 准时调用 workflow_dispatch 保证；此处 crontab 仅作兜底备份。
+    # 说明：WorkBuddy 自动化已下线（用户白天不开电脑），此处 GitHub cron 为唯一触发源。
+    #       注意：GitHub 定时任务在网络高峰可能延迟数小时，故两次更新大概率落在傍晚/晚间，
+    #       但每天仍保证两次刷新；如需手动刷新可在 Actions 页面点 Run workflow。
     - cron: "35 3 * * 1-5"
     - cron: "5 7 * * 1-5"
-  workflow_dispatch:   # 允许在 Actions 页面手动触发，也允许外部 API 精准触发
+  workflow_dispatch:   # 允许在 Actions 页面手动触发
 
 permissions:
   contents: write
