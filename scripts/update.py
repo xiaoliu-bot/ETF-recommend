@@ -12,7 +12,11 @@ import random
 import ssl
 import time
 import urllib.request
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+# 看板面向北京时间用户：所有“现在”统一用北京时间(UTC+8)，
+# 避免 GitHub runner(UTC) 导致 run_time / 标签 / 前端展示整体偏 8 小时、把延迟也掩盖掉
+BJ = timezone(timedelta(hours=8))
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE, "data")
@@ -264,8 +268,8 @@ def fetch_kline_163(sid, lmt=160):
     """第四兜底数据源: 网易财经(CSV，独立源站，抗单点故障)"""
     mkt, code = sid.split(".")
     prefix = "0" if mkt == "1" else "1"   # 163 约定: 沪市前缀0, 深市前缀1
-    end = datetime.now().strftime("%Y%m%d")
-    start = (datetime.now() - timedelta(days=lmt + 40)).strftime("%Y%m%d")
+    end = datetime.now(BJ).strftime("%Y%m%d")
+    start = (datetime.now(BJ) - timedelta(days=lmt + 40)).strftime("%Y%m%d")
     url = (f"https://quotes.money.163.com/service/chddata.html?"
            f"code={prefix}{code}&start={start}&end={end}"
            f"&fields=TCLOSE;HIGH;LOW;TOPEN;VOTURNOVER;VATURNOVER")
@@ -388,7 +392,7 @@ def load_news():
             items = json.load(f)
     except Exception:
         return []
-    cutoff = (datetime.now() - timedelta(days=3)).strftime("%Y-%m-%d")
+    cutoff = (datetime.now(BJ) - timedelta(days=3)).strftime("%Y-%m-%d")
     return [x for x in items if str(x.get("time", ""))[:10] >= cutoff]
 
 
@@ -781,7 +785,7 @@ def main(asof=None):
         news = load_replay_news(asof)
         print(f"[回放] 锚定日期 {asof}，新闻条目 {len(news)}")
     else:
-        now = datetime.now()
+        now = datetime.now(BJ)
         hh = now.hour + now.minute / 60
         label = "午盘" if hh < 13 else ("尾盘" if hh < 15.17 else "收盘后")
         run_time_str = now.strftime("%Y-%m-%d %H:%M:%S")
